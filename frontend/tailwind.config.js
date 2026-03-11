@@ -7,18 +7,32 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "#0F0F14",
-        foreground: "#F8F8F8",
-        muted: "#1A1A22",
-        "muted-foreground": "#A1A1AA",
+        background: "#0E0E13",
+        foreground: "#F4F4F5",
+
+        muted: "#16161D",
+        "muted-foreground": "#9CA3AF",
+
         secondary: "#7C3AED",
         accent: "#22D3EE",
-        border: "#2A2A35",
-        card: "#14141B",
+
+        border: "#262631",
+        card: "#13131A",
+
+        // Optional layered surfaces
+        surface: "#181822",
+        "surface-2": "#1C1C28",
       },
+
       boxShadow: {
-        card: "0 4px 20px rgba(0,0,0,0.3)",
-        elevated: "0 10px 40px rgba(124, 58, 237, 0.2)",
+        card: "0 4px 20px rgba(0,0,0,0.35)",
+        elevated: "0 12px 45px rgba(124, 58, 237, 0.25)",
+        glow: "0 0 30px rgba(124, 58, 237, 0.35)",
+      },
+
+      borderRadius: {
+        xl: "1rem",
+        "2xl": "1.5rem",
       },
     },
   },

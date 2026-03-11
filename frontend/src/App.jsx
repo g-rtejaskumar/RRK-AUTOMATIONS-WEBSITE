@@ -72,7 +72,9 @@ import { Toaster } from "./components/ui/toaster";
 
 import Index from "./pages/index";
 import Auth from "./pages/Auth";
-import Admin from "./pages/Admin";
+import Admin from "./pages/admin/Admin";
+import AdminServices from "./pages/admin/AdminServices";
+import AdminPricing from "./pages/admin/AdminPricing";
 import NotFound from "./pages/NotFound";
 import "./index.css";
 
@@ -85,7 +87,10 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
+          
           <Route path="/admin" element={<Admin />} />
+          <Route path="/admin/services" element={<AdminServices />} />
+          <Route path="/admin/pricing" element={<AdminPricing />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
