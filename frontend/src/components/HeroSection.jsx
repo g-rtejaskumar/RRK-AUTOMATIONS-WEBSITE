@@ -39,7 +39,7 @@ const HeroSection = () => {
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl animate-pulse" />
 
       <div className="section-container relative z-10 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 items-center">
           <motion.div
             className="text-left"
             variants={containerVariants}
@@ -62,12 +62,11 @@ const HeroSection = () => {
               variants={fadeUp}
               className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight"
             >
-              AI & WhatsApp{" "}
+              AI Automations
               <br className="hidden sm:block" />
               <span className="text-accent drop-shadow-[0_0_15px_rgba(34,211,238,0.6)]">
-                Automations
+                & Complete Software Solutions
               </span>{" "}
-              That Turn <br className="hidden sm:block" /> Leads Into Customers
             </motion.h1>
 
             {/* Subtext */}
@@ -136,12 +135,19 @@ const HeroSection = () => {
           {/* Hero Image / Visual */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9, x: 40 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
+            animate={{ opacity: 1, scale: 1.1, x: 30, y: -100 }}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="hidden lg:block relative"
           >
-             <div className="relative z-10 rounded-[2rem] border border-white/10 bg-card/30 backdrop-blur-2xl p-4 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] overflow-hidden">
-                <img src="/automation_workflow.png" alt="Automation Workflow" className="w-full rounded-2xl" />
+             <div className="relative z-10 rounded-[2rem] border border-white/10 bg-card/30 backdrop-blur-2xl p-2 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] overflow-hidden">
+                <video 
+                  src="/hero-video.mp4" 
+                  autoPlay 
+                  loop 
+                  muted 
+                  playsInline 
+                  className="w-full rounded-2xl object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-tr from-secondary/10 via-transparent to-accent/10 pointer-events-none" />
              </div>
              
