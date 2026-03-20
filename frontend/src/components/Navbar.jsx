@@ -11,7 +11,6 @@ const navLinks = [
   { name: "Case Studies", href: "/case-studies" },
   { name: "About", href: "/about" },
   { name: "Blog", href: "/blog" },
-  { name: "ABCB", href: "/abcb", isNew: true },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -121,7 +120,7 @@ const Navbar = () => {
               <div className="flex flex-col gap-4 py-6 px-2">
                 {navLinks.map((link) => (
                   <Link
-                    key={link.label}
+                    key={link.name}
                     to={link.href}
                     className={`text-sm font-medium transition-colors ${
                       location.pathname === link.href
@@ -129,7 +128,7 @@ const Navbar = () => {
                         : "text-muted-foreground hover:text-foreground"
                     }`}
                   >
-                    {link.label}
+                    {link.name}
                   </Link>
                 ))}
 
