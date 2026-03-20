@@ -7,6 +7,7 @@ const footerLinks = [
   { label: "Case Studies", href: "/case-studies" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+  { label: "Blog", href: "/blog" },
 ];
 
 const legalLinks = [
@@ -54,22 +55,26 @@ const Footer = () => {
             </p>
           </div>
 
-          {/* Links */}
-          <div className="flex flex-wrap gap-8 justify-start md:justify-center">
-            {footerLinks.map((link) => (
-              <Link
-                key={link.label}
-                to={link.href}
-                className="relative text-sm text-muted-foreground transition-all hover:text-foreground group"
-              >
-                {link.label}
-                <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-secondary transition-all group-hover:w-full" />
-              </Link>
-            ))}
+          {/* Quick Links */}
+          <div className="flex flex-col items-start md:items-center">
+            <p className="text-sm font-semibold mb-4 text-foreground">Quick Links</p>
+            <div className="grid grid-cols-2 gap-x-10 gap-y-3">
+              {footerLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="relative text-sm text-muted-foreground transition-all hover:text-foreground group"
+                >
+                  {link.label}
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-secondary transition-all group-hover:w-full" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* Social */}
-          <div className="flex md:justify-end">
+          <div className="flex flex-col items-start md:items-end gap-4">
+            <p className="text-sm font-semibold text-foreground">Follow Us</p>
             <a
               href="https://linkedin.com/company/rrk-automations"
               target="_blank"
@@ -98,8 +103,6 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
-            <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
-            <Link to="/abcb" className="text-sm text-muted-foreground hover:text-foreground transition-colors font-medium text-secondary">ABCB (New)</Link>
           </div>
         </div>
       </div>

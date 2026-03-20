@@ -15,7 +15,8 @@ const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Blog = lazy(() => import("./pages/Blog"));
-const ABCB = lazy(() => import("./pages/ABCB"));
+
+const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Admin = lazy(() => import("./pages/admin/Admin"));
 const AdminServices = lazy(() => import("./pages/admin/AdminServices"));
@@ -45,7 +46,8 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/blog" element={<Blog />} />
-            <Route path="/abcb" element={<ABCB />} />
+
+            <Route path="/blog/:slug" element={<BlogPost />} />
             
             {/* Auth & Admin */}
             <Route path="/auth" element={<Auth />} />

@@ -14,7 +14,7 @@ const posts = [
     date: "March 20, 2026",
     author: "RRK Team",
     readTime: "3 min read",
-    link: "/abcb",
+    link: "/blog/abcb-announcement",
     category: "Initiative"
   },
   {
@@ -25,7 +25,7 @@ const posts = [
     date: "March 15, 2026",
     author: "Automation Expert",
     readTime: "5 min read",
-    link: "#",
+    link: "/blog/whatsapp-marketing-2026",
     category: "Guides"
   },
   {
@@ -36,8 +36,30 @@ const posts = [
     date: "March 10, 2026",
     author: "Product Team",
     readTime: "4 min read",
-    link: "#",
+    link: "/blog/ai-lead-qualification",
     category: "Case Study"
+  },
+  {
+    id: "ecommerce-automations",
+    title: "5 E-commerce Automations That Save 20+ Hours Per Week",
+    excerpt: "Discover the top 5 automations that eliminate repetitive tasks, reduce errors, and free up your team to focus on growth.",
+    image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?q=80&w=2070&auto=format&fit=crop",
+    date: "March 5, 2026",
+    author: "RRK Team",
+    readTime: "6 min read",
+    link: "/blog/ecommerce-automations",
+    category: "Guides"
+  },
+  {
+    id: "ai-customer-support-agents",
+    title: "Building AI Customer Support Agents: A Complete Guide",
+    excerpt: "Learn how to build AI agents that handle FAQs, route tickets, and deliver instant, accurate customer support 24/7.",
+    image: "https://images.unsplash.com/photo-1596524430615-b46475ddff6e?q=80&w=2070&auto=format&fit=crop",
+    date: "March 1, 2026",
+    author: "Product Team",
+    readTime: "5 min read",
+    link: "/blog/ai-customer-support-agents",
+    category: "Guides"
   }
 ];
 
