@@ -10,7 +10,6 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import PricingSection from "../components/PricingSection";
 import WhyUsSection from "../components/WhyUsSection";
 import CTABanner from "../components/CTABanner";
-import FAQSection from "../components/FAQSection";
 import ContactSection from "../components/ContactSection";
 
 const Index = () => {
@@ -31,7 +30,6 @@ const Index = () => {
       <PricingSection />
       <WhyUsSection />
       <CTABanner />
-      <FAQSection />
       <ContactSection />
     </Layout>
   );

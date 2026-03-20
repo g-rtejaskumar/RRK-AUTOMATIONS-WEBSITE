@@ -108,24 +108,24 @@ const PricingSection = () => {
             Clear tiers built for growth. No hidden complexity.
           </p>
 
-          {/* Currency Toggle */}
-          <div className="inline-flex items-center gap-2 p-1 bg-muted rounded-lg">
+          {/* Currency Toggle — Enhanced */}
+          <div className="inline-flex items-center gap-1 p-1.5 bg-muted/80 border border-border rounded-xl">
             <button
               onClick={() => setIsIndian(true)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+              className={`relative px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 isIndian
-                  ? "bg-card shadow-card text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-secondary text-white shadow-lg shadow-secondary/30"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
             >
               🇮🇳 INR
             </button>
             <button
               onClick={() => setIsIndian(false)}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
+              className={`relative px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 ${
                 !isIndian
-                  ? "bg-card shadow-card text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+                  ? "bg-secondary text-white shadow-lg shadow-secondary/30"
+                  : "text-muted-foreground hover:text-foreground hover:bg-muted"
               }`}
             >
               🌍 USD

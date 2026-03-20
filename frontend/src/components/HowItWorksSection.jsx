@@ -55,8 +55,15 @@ const HowItWorksSection = () => {
 
         {/* Steps */}
         <div className="grid md:grid-cols-3 gap-10 relative">
-          {/* Timeline */}
-          <div className="hidden md:block absolute top-28 left-[15%] right-[15%] h-[2px] bg-gradient-to-r from-secondary/20 via-secondary to-accent/20" />
+          {/* Animated Timeline */}
+          <div className="hidden md:block absolute top-28 left-[15%] right-[15%] h-[2px] overflow-hidden">
+            <div className="h-full w-full bg-gradient-to-r from-secondary/20 via-secondary to-accent/20" />
+            <motion.div
+              className="absolute top-0 left-0 h-full w-1/3 bg-gradient-to-r from-transparent via-secondary to-transparent"
+              animate={{ x: ["-100%", "400%"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
 
           {steps.map((step, index) => (
             <motion.div
@@ -68,14 +75,17 @@ const HowItWorksSection = () => {
               className="relative text-center group"
             >
               {/* Icon */}
-              <div className="relative inline-flex mb-8">
-                <div className="w-24 h-24 rounded-2xl bg-card/80 backdrop-blur-xl border border-border shadow-elevated flex items-center justify-center group-hover:border-secondary/40 transition-all duration-300">
+              <motion.div
+                className="relative inline-flex mb-8"
+                whileHover={{ y: -6, transition: { duration: 0.3 } }}
+              >
+                <div className="w-24 h-24 rounded-2xl bg-card/80 backdrop-blur-xl border border-border shadow-elevated flex items-center justify-center group-hover:border-secondary/40 group-hover:shadow-[0_0_40px_rgba(124,58,237,0.2)] transition-all duration-300">
                   <step.icon className="w-9 h-9 text-secondary drop-shadow-[0_0_12px_rgba(124,58,237,0.6)]" />
                 </div>
                 <span className="absolute -top-3 -right-3 w-9 h-9 bg-gradient-to-br from-secondary to-accent text-white text-sm font-bold rounded-full flex items-center justify-center shadow-lg">
                   {step.number}
                 </span>
-              </div>
+              </motion.div>
 
               {/* Content */}
               <div className="px-6">

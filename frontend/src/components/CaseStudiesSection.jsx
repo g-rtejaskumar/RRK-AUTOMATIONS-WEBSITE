@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { TrendingUp, Zap, Clock } from "lucide-react";
+import { TrendingUp, Zap, Clock, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const caseStudies = [
   {
@@ -38,7 +39,16 @@ const CaseStudiesSection = () => {
       <div className="section-container">
 
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-20"
+        >
+          <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
+            Case Studies
+          </p>
           <h2 className="text-3xl sm:text-4xl font-bold mb-6">
             Real Automation Results
           </h2>
@@ -47,25 +57,37 @@ const CaseStudiesSection = () => {
             See how businesses are using automation systems to respond faster,
             capture more leads, and increase revenue.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Visual Showcase */}
+        {/* Visual Showcase — constrained height */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
-          className="mb-20 rounded-2xl overflow-hidden border border-border shadow-2xl relative group"
+          transition={{ duration: 0.7 }}
+          whileHover={{ scale: 1.01 }}
+          className="mb-20 rounded-2xl overflow-hidden border border-border shadow-2xl relative group cursor-pointer"
         >
-          <img src="/dashboard_mockup.png" alt="AI Analytics Dashboard" className="w-full h-auto" />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
+          <div className="max-h-[400px] overflow-hidden">
+            <img
+              src="/dashboard_mockup.png"
+              alt="AI Analytics Dashboard"
+              className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"
+            />
+          </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-60" />
           <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end">
              <div>
                 <p className="text-white font-bold text-xl mb-1 text-left">Modern AI Dashboards</p>
                 <p className="text-white/70 text-sm text-left">Real-time lead tracking & conversion analytics</p>
              </div>
-             <div className="bg-secondary text-white text-xs font-bold px-4 py-2 rounded-full hidden sm:block">
-                LIVE DEMO
-             </div>
+             <Link
+               to="/contact"
+               className="bg-secondary hover:bg-secondary/80 text-white text-xs font-bold px-5 py-2.5 rounded-full hidden sm:flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-secondary/40"
+             >
+               LIVE DEMO
+               <ArrowRight className="w-3.5 h-3.5" />
+             </Link>
           </div>
         </motion.div>
 
@@ -82,10 +104,13 @@ const CaseStudiesSection = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15 }}
-                className="p-8 rounded-xl border bg-background hover:shadow-lg transition-all"
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="p-8 rounded-xl border bg-background hover:border-secondary/40 hover:shadow-[0_20px_60px_-15px_rgba(124,58,237,0.25)] transition-all duration-300 group"
               >
 
-                <Icon className="w-8 h-8 text-secondary mb-5" />
+                <div className="w-14 h-14 rounded-xl bg-secondary/10 border border-secondary/20 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform duration-300">
+                  <Icon className="w-7 h-7 text-secondary" />
+                </div>
 
                 <h3 className="text-xl font-semibold mb-3">
                   {study.industry}

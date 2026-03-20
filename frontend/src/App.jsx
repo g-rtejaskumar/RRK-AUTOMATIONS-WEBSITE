@@ -15,6 +15,7 @@ const CaseStudies = lazy(() => import("./pages/CaseStudies"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
 const TermsOfService = lazy(() => import("./pages/TermsOfService"));
 const Blog = lazy(() => import("./pages/Blog"));
+const FAQ = lazy(() => import("./pages/FAQ"));
 
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Auth = lazy(() => import("./pages/Auth"));
@@ -46,6 +47,7 @@ const App = () => {
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/blog" element={<Blog />} />
+            <Route path="/faq" element={<FAQ />} />
 
             <Route path="/blog/:slug" element={<BlogPost />} />
             

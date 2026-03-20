@@ -8,6 +8,7 @@ const footerLinks = [
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
   { label: "Blog", href: "/blog" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 const legalLinks = [
@@ -103,7 +104,6 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
-            <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
           </div>
         </div>
       </div>
