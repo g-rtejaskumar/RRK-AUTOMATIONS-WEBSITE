@@ -103,6 +103,7 @@ const Footer = () => {
                 {link.label}
               </Link>
             ))}
+            <Link to="/blog" className="text-sm text-muted-foreground hover:text-foreground transition-colors">Blog</Link>
           </div>
         </div>
       </div>

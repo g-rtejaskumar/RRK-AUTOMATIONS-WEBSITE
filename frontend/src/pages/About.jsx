@@ -95,32 +95,37 @@ const About = () => {
 
       {/* Story */}
       <section className="py-20 bg-muted/30">
-        <div className="section-container">
-          <div className="max-w-3xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
+              className="grid lg:grid-cols-2 gap-12 items-center"
             >
-              <h2 className="text-3xl font-bold mb-8">Our Story</h2>
-              <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-                <p>
-                  RRK Automations was born from a simple observation: businesses were losing revenue not because they lacked leads, but because they couldn&apos;t respond fast enough.
-                </p>
-                <p>
-                  We saw agencies spending hours on manual follow-ups, startups losing prospects because replies took too long, and growing businesses drowning in repetitive tasks that could easily be automated.
-                </p>
-                <p>
-                  So we built RRK Automations to solve exactly that — <strong className="text-foreground">custom AI and WhatsApp automation systems deployed in 48 hours</strong>, designed to capture leads, qualify them automatically, and convert them into customers while you focus on growing your business.
-                </p>
-                <p>
-                  Today, we work with startups, marketing agencies, coaching businesses, and e-commerce brands across India and internationally. Every project is founder-led, ensuring quality, speed, and direct accountability.
-                </p>
+              <div>
+                <h2 className="text-3xl font-bold mb-8">Our Story</h2>
+                <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
+                  <p>
+                    RRK Automations was born from a simple observation: businesses were losing revenue not because they lacked leads, but because they couldn&apos;t respond fast enough.
+                  </p>
+                  <p>
+                    We saw agencies spending hours on manual follow-ups, startups losing prospects because replies took too long, and growing businesses drowning in repetitive tasks that could easily be automated.
+                  </p>
+                  <p>
+                    So we built RRK Automations to solve exactly that — <strong className="text-foreground">custom AI and WhatsApp automation systems deployed in 48 hours</strong>, designed to capture leads, qualify them automatically, and convert them into customers while you focus on growing your business.
+                  </p>
+                  <p>
+                    Today, we work with startups, marketing agencies, coaching businesses, and e-commerce brands across India and internationally. Every project is founder-led, ensuring quality, speed, and direct accountability.
+                  </p>
+                </div>
+              </div>
+              <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl">
+                <img src="/team_photo.png" alt="RRK Team" className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
               </div>
             </motion.div>
           </div>
-        </div>
       </section>
 
       {/* Values */}

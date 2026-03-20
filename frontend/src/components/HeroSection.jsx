@@ -39,125 +39,117 @@ const HeroSection = () => {
       <div className="absolute bottom-10 left-10 w-[400px] h-[400px] bg-accent/10 rounded-full blur-3xl animate-pulse" />
 
       <div className="section-container relative z-10 py-20">
-        <motion.div
-          className="max-w-4xl mx-auto text-center"
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-
-          {/* Tech Badge */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
           <motion.div
-            variants={fadeUp}
-            className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary/10 text-secondary border border-secondary/30 mb-8 backdrop-blur-md"
+            className="text-left"
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
           >
-            <Zap className="w-4 h-4 text-accent" />
-            <span className="text-sm font-medium">
-              48-Hour Automation Delivery • Limited Weekly Slots
-            </span>
-          </motion.div>
+            {/* Tech Badge */}
+            <motion.div
+              variants={fadeUp}
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-secondary/10 text-secondary border border-secondary/30 mb-8 backdrop-blur-md"
+            >
+              <Zap className="w-4 h-4 text-accent" />
+              <span className="text-sm font-medium">
+                48-Hour Automation Delivery • Limited Weekly Slots
+              </span>
+            </motion.div>
 
-          {/* Main Heading */}
-          <motion.h1
-            variants={fadeUp}
-            className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-6"
-          >
-            AI & WhatsApp{" "}
-            <span className="text-accent drop-shadow-[0_0_15px_rgba(34,211,238,0.6)]">
-              Automations
-            </span>{" "}
-            That Turn Leads Into Customers
-            <br />
-            <span className="text-secondary drop-shadow-[0_0_15px_rgba(124,58,237,0.6)]">
-              Deployed in 48 Hours
-            </span>
-          </motion.h1>
+            {/* Main Heading */}
+            <motion.h1
+              variants={fadeUp}
+              className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.1] mb-6 tracking-tight"
+            >
+              AI & WhatsApp{" "}
+              <br className="hidden sm:block" />
+              <span className="text-accent drop-shadow-[0_0_15px_rgba(34,211,238,0.6)]">
+                Automations
+              </span>{" "}
+              That Turn <br className="hidden sm:block" /> Leads Into Customers
+            </motion.h1>
 
-          {/* Subtext */}
-          <motion.p
-            variants={fadeUp}
-            className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto mb-8"
-          >
-            We design automation systems for agencies, startups, and growing
-            businesses — helping you capture leads, follow up instantly, and
-            convert prospects automatically.
-          </motion.p>
+            {/* Subtext */}
+            <motion.p
+              variants={fadeUp}
+              className="text-lg sm:text-xl text-muted-foreground max-w-xl mb-10 leading-relaxed"
+            >
+              We design automation systems for agencies, startups, and growing
+              businesses — helping you capture leads, follow up instantly, and
+              convert prospects automatically.
+            </motion.p>
 
-          {/* Benefits */}
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-wrap justify-center gap-4 mb-10 text-sm text-muted-foreground"
-          >
-            <span className="px-3 py-1 rounded-full border border-border">
-              ⚡ Instant Lead Responses
-            </span>
-            <span className="px-3 py-1 rounded-full border border-border">
-              🤖 AI Lead Qualification
-            </span>
-            <span className="px-3 py-1 rounded-full border border-border">
-              📈 Revenue-Focused Workflows
-            </span>
-          </motion.div>
+            {/* CTA Buttons */}
+            <motion.div
+              variants={fadeUp}
+              className="flex flex-col sm:flex-row gap-4 items-start"
+            >
+              <Button variant="cta" size="xl" className="w-full sm:w-auto">
+                <a
+                  href="https://calendly.com/rrkautomations/new-meeting"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <Calendar className="w-5 h-5" />
+                  Book Free Audit
+                  <ArrowRight className="w-5 h-5" />
+                </a>
+              </Button>
 
-          {/* CTA Buttons */}
-          <motion.div
-            variants={fadeUp}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <Button variant="cta" size="xl" className="w-full sm:w-auto">
-              <a
-                href="https://calendly.com/rrkautomations/new-meeting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <Calendar className="w-5 h-5" />
-                Book Free Automation Audit
-                <ArrowRight className="w-5 h-5" />
-              </a>
-            </Button>
+              <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
+                <a
+                  href="https://wa.me/918341374436"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2"
+                >
+                  <MessageCircle className="w-5 h-5" />
+                  Chat on WhatsApp
+                </a>
+              </Button>
+            </motion.div>
 
-            <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
-              <a
-                href="https://wa.me/918341374436"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Chat on WhatsApp
-              </a>
-            </Button>
-          </motion.div>
-
-          {/* Social Proof */}
-          <motion.div
-            variants={fadeUp}
-            className="mt-16 pt-10 border-t border-border"
-          >
-            <p className="text-muted-foreground text-sm mb-4">
-              Trusted automation partner for scaling businesses
-            </p>
-
-            <div className="flex flex-wrap justify-center items-center gap-8 opacity-80">
-              <div className="font-semibold text-lg">
-                50+ Automation Workflows Deployed
+            {/* Social Proof */}
+            <motion.div
+              variants={fadeUp}
+              className="mt-16 pt-8 border-t border-border flex items-center gap-8"
+            >
+              <div>
+                <p className="text-2xl font-bold text-secondary">50+</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Workflows</p>
               </div>
-
-              <div className="hidden sm:block w-px h-6 bg-border" />
-
-              <div className="font-semibold text-lg">
-                48 Hour Deployment
+              <div className="w-px h-10 bg-border" />
+              <div>
+                <p className="text-2xl font-bold text-accent">48hrs</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Deployment</p>
               </div>
-
-              <div className="hidden sm:block w-px h-6 bg-border" />
-
-              <div className="font-semibold text-lg">
-                Founder-Led Execution
+              <div className="w-px h-10 bg-border" />
+              <div>
+                <p className="text-2xl font-bold text-white">15+</p>
+                <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold">Clients</p>
               </div>
-            </div>
+            </motion.div>
           </motion.div>
-        </motion.div>
+
+          {/* Hero Image / Visual */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9, x: 40 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="hidden lg:block relative"
+          >
+             <div className="relative z-10 rounded-[2rem] border border-white/10 bg-card/30 backdrop-blur-2xl p-4 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] overflow-hidden">
+                <img src="/automation_workflow.png" alt="Automation Workflow" className="w-full rounded-2xl" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-secondary/10 via-transparent to-accent/10 pointer-events-none" />
+             </div>
+             
+             {/* Decorative Elements */}
+             <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary/20 rounded-full blur-[100px] animate-pulse" />
+             <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-accent/20 rounded-full blur-[100px] animate-pulse delay-700" />
+          </motion.div>
+        </div>
       </div>
     </section>
   );

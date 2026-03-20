@@ -49,6 +49,26 @@ const CaseStudiesSection = () => {
           </p>
         </div>
 
+        {/* Visual Showcase */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="mb-20 rounded-2xl overflow-hidden border border-border shadow-2xl relative group"
+        >
+          <img src="/dashboard_mockup.png" alt="AI Analytics Dashboard" className="w-full h-auto" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent opacity-40" />
+          <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end">
+             <div>
+                <p className="text-white font-bold text-xl mb-1 text-left">Modern AI Dashboards</p>
+                <p className="text-white/70 text-sm text-left">Real-time lead tracking & conversion analytics</p>
+             </div>
+             <div className="bg-secondary text-white text-xs font-bold px-4 py-2 rounded-full hidden sm:block">
+                LIVE DEMO
+             </div>
+          </div>
+        </motion.div>
+
         {/* Case Studies */}
         <div className="grid md:grid-cols-3 gap-8">
 
