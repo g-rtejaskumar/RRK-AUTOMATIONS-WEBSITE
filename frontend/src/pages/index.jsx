@@ -4,13 +4,10 @@ import HeroSection from "../components/HeroSection";
 import TrustedBySection from "../components/TrustedBySection";
 import ProblemSolutionSection from "../components/ProblemSolutionSection";
 import HowItWorksSection from "../components/HowItWorksSection";
-import ServicesSection from "../components/ServicesSection";
-import CaseStudiesSection from "../components/CaseStudiesSection";
 import TestimonialsSection from "../components/TestimonialsSection";
-import PricingSection from "../components/PricingSection";
 import WhyUsSection from "../components/WhyUsSection";
 import CTABanner from "../components/CTABanner";
-import ContactSection from "../components/ContactSection";
+import FeaturesGrid from "../components/FeaturesGrid";
 
 const Index = () => {
   return (
@@ -24,13 +21,10 @@ const Index = () => {
       <TrustedBySection />
       <ProblemSolutionSection />
       <HowItWorksSection />
-      <ServicesSection />
-      <CaseStudiesSection />
+      <FeaturesGrid />
       <TestimonialsSection />
-      <PricingSection />
       <WhyUsSection />
       <CTABanner />
-      <ContactSection />
     </Layout>
   );
 };

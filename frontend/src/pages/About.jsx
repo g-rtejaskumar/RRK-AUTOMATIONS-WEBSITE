@@ -1,196 +1,179 @@
 import Layout from "../components/Layout";
 import SEOHead from "../components/SEOHead";
 import { motion } from "framer-motion";
-import { Zap, Heart, Target, Users } from "lucide-react";
+import { Zap, Heart, Target, Users, Award, Star, ShieldCheck, Quote } from "lucide-react";
 import CTABanner from "../components/CTABanner";
 
-const values = [
-  {
-    icon: Zap,
-    title: "Speed",
-    description: "We move fast. Most automations are live within 48–72 hours because we believe speed is a competitive advantage.",
-  },
-  {
-    icon: Target,
-    title: "Results-First",
-    description: "Every automation we build is tied to measurable business outcomes — more leads, more sales, or less manual work.",
-  },
-  {
-    icon: Heart,
-    title: "Partnership",
-    description: "We don't just deliver and disappear. We partner with you to iterate, optimize, and scale your automation systems.",
-  },
-  {
-    icon: Users,
-    title: "Transparency",
-    description: "Clear pricing, honest timelines, and open communication. No surprises, no hidden fees, no corporate runaround.",
-  },
+const teamMembers = [
+  { name: "S. Mahesh Kumar", role: "Founder", initials: "MK" },
+  { name: "S. Sai Teja", role: "M.D", initials: "ST" },
+  { name: "Tejas Kumar", role: "C.T.O", initials: "TK" },
+  { name: "Karthikeya", role: "C.F.O", initials: "K" },
+  { name: "Uday Kumar", role: "C.O.O", initials: "UK" },
+  { name: "Devanshuu", role: "C.M.O", initials: "D" },
 ];
 
 const About = () => {
   return (
     <Layout>
       <SEOHead
-        title="About Us"
-        description="RRK Automations is a founder-led AI & WhatsApp automation agency helping businesses automate lead capture, follow-ups, and sales workflows."
+        title="Our Story - RRK Automations"
+        description="The story of RRK Automations: A journey of belief, resilience, and building something from nothing by founder S. Mahesh Kumar."
         path="/about"
-        keywords="about RRK Automations, automation agency India, founder-led automation"
+        keywords="Mahesh Kumar, RRK Automations founder, warehouse management automation, startup story"
       />
 
-      {/* Structured Data: AboutPage & Breadcrumb */}
-      <script type="application/ld+json">
-      {JSON.stringify([
-        {
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          "mainEntity": {
-            "@type": "Organization",
-            "name": "RRK Automations",
-            "description": "Founder-led AI & WhatsApp automation agency specializing in high-speed deployment and ROI-focused systems."
-          }
-        },
-        {
-          "@context": "https://schema.org",
-          "@type": "BreadcrumbList",
-          "itemListElement": [
-            {
-              "@type": "ListItem",
-              "position": 1,
-              "name": "Home",
-              "item": "https://rrkautomations.com/"
-            },
-            {
-              "@type": "ListItem",
-              "position": 2,
-              "name": "About Us",
-              "item": "https://rrkautomations.com/about"
-            }
-          ]
-        }
-      ])}
-      </script>
-
-      {/* Hero */}
-      <section className="page-hero py-20 bg-background">
-        <div className="section-container">
+      {/* Hero Section */}
+      <section className="relative py-24 bg-background overflow-hidden">
+        <div className="absolute inset-0 opacity-[0.03] pointer-events-none">
+          <div className="absolute inset-0" style={{ backgroundImage: 'linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px)', backgroundSize: '60px 60px' }} />
+        </div>
+        
+        <div className="section-container relative z-10 text-center">
           <motion.div
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto"
+            transition={{ duration: 0.8 }}
           >
-            <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
-              About Us
-            </p>
-            <h1 className="text-4xl sm:text-5xl font-extrabold mb-6">
-              We Build Systems That{" "}
-              <span className="text-secondary">Work While You Sleep</span>
+            <p className="text-secondary font-semibold text-sm uppercase tracking-widest mb-4">The Foundation of RRK</p>
+            <h1 className="text-5xl md:text-7xl font-extrabold mb-8 tracking-tighter">
+              Relentless <span className="text-accent underline decoration-secondary/30">Ambition</span>. <br />
+              Unbreakable Vision.
             </h1>
-            <p className="text-muted-foreground text-lg">
-              A lean, founder-led automation agency obsessed with delivering measurable results in record time.
+            <p className="text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
+              This is not just a story of a company. This is the story of belief, resilience, and building something from nothing.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Story */}
-      <section className="py-20 bg-muted/30">
-          <div className="max-w-6xl mx-auto">
+      {/* Founder's Journey */}
+      <section className="py-24 bg-muted/20">
+        <div className="section-container">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
             <motion.div
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="grid lg:grid-cols-2 gap-12 items-center"
+              className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10"
             >
-              <div>
-                <h2 className="text-3xl font-bold mb-8">Our Story</h2>
-                <div className="space-y-6 text-muted-foreground text-lg leading-relaxed">
-                  <p>
-                    RRK Automations was born from a simple observation: businesses were losing revenue not because they lacked leads, but because they couldn&apos;t respond fast enough.
-                  </p>
-                  <p>
-                    We saw agencies spending hours on manual follow-ups, startups losing prospects because replies took too long, and growing businesses drowning in repetitive tasks that could easily be automated.
-                  </p>
-                  <p>
-                    So we built RRK Automations to solve exactly that — <strong className="text-foreground">custom AI and WhatsApp automation systems deployed in 48 hours</strong>, designed to capture leads, qualify them automatically, and convert them into customers while you focus on growing your business.
-                  </p>
-                  <p>
-                    Today, we work with startups, marketing agencies, coaching businesses, and e-commerce brands across India and internationally. Every project is founder-led, ensuring quality, speed, and direct accountability.
-                  </p>
-                </div>
-              </div>
-              <div className="relative rounded-2xl overflow-hidden border border-border shadow-2xl">
-                <img src="/team_photo.png" alt="RRK Team" className="w-full h-full object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/40 to-transparent" />
+              <img src="/team_photo.png" alt="S. Mahesh Kumar - Founder" className="w-full h-[800px] object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0,y:10 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <h2 className="text-3xl font-bold flex items-center gap-3">
+                <Target className="text-secondary" /> The Journey of S. Mahesh Kumar
+              </h2>
+              <div className="text-muted-foreground text-lg space-y-4 leading-relaxed">
+                <p>
+                  Founded by <strong className="text-white">S. Mahesh Kumar</strong>, the journey of RRK AUTOMATIONS began not in a corporate office, but in moments of uncertainty and determination. While many chose traditional paths, Mahesh chose to build something of his own—relying not on a formal degree, but on skills, curiosity, and an unbreakable mindset.
+                </p>
+                <p>
+                  There were nights that stretched into mornings. Countless hours were spent learning, experimenting, failing, and trying again. Every setback became a lesson. Every failure, a stepping stone.
+                </p>
+                <p>
+                  Starting from scratch was not easy. There were financial pressures, societal expectations, and the constant question: <em className="italic text-accent">“Will this work?”</em> But what kept him moving forward was belief—belief in his vision and belief in himself.
+                </p>
               </div>
             </motion.div>
           </div>
+        </div>
       </section>
 
-      {/* Values */}
+      {/* The Pillars of Support */}
       <section className="py-24 bg-background">
         <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="text-center max-w-3xl mx-auto mb-16"
-          >
-            <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-              What Drives Us
-            </h2>
+          <div className="max-w-4xl mx-auto text-center mb-20">
+            <h2 className="text-4xl font-bold mb-6">Built on a <span className="text-secondary italic font-serif">Pillar of Support</span></h2>
             <p className="text-muted-foreground text-lg">
-              Our core values shape how we work, build, and partner with every client.
+              Behind every extraordinary venture are the people who believe in it before the world does.
             </p>
-          </motion.div>
+          </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {values.map((value, index) => (
-              <motion.div
-                key={value.title}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.6 }}
-                className="bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-8 text-center hover:border-secondary/40 hover:shadow-elevated transition-all duration-300"
-              >
-                <div className="w-14 h-14 mx-auto mb-6 rounded-2xl bg-secondary/10 border border-secondary/20 flex items-center justify-center">
-                  <value.icon className="w-7 h-7 text-secondary" />
-                </div>
-                <h3 className="text-lg font-bold mb-3">{value.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
-                  {value.description}
-                </p>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 gap-12">
+            {/* Family */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="p-10 rounded-3xl bg-card border border-border/50 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
+                <Heart className="w-20 h-20 text-secondary" />
+              </div>
+              <h3 className="text-2xl font-bold mb-6">Family: The Unwavering Light</h3>
+              <p className="text-muted-foreground leading-relaxed mb-6">
+                Behind this journey stood a strong pillar of support—his parents, <strong className="text-white">Mr. and Mrs. Ramakrishna</strong>. Their unwavering faith and sacrifices gave Mahesh the strength to continue, even in the toughest times.
+              </p>
+              <p className="text-muted-foreground leading-relaxed">
+                Alongside them was his younger brother, <strong className="text-white">S. Sai Teja</strong>, who brought constant motivation, support, and companionship—standing beside Mahesh through every high and low.
+              </p>
+            </motion.div>
+
+            {/* Friends */}
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="p-10 rounded-3xl bg-card border border-border/50 relative overflow-hidden group"
+            >
+              <div className="absolute top-0 right-0 p-6 opacity-20 group-hover:opacity-40 transition-opacity">
+                <Users className="w-20 h-20 text-accent" />
+              </div>
+              <h3 className="text-2xl font-bold mb-6">Friends: The Believers</h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Through the most challenging phases, Mahesh was supported by a close circle of friends: 
+                <strong className="text-white"> Tejas Kumar, Karthikeya, Uday Kumar, and Devanshuu.</strong>
+              </p>
+              <p className="text-muted-foreground leading-relaxed mt-4">
+                They stood with him during tough times—offering encouragement, ideas, and strength when it was needed the most. Their presence played a vital role in keeping the vision alive during moments of doubt.
+              </p>
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-20 bg-muted/30">
+      {/* The Success & Mission */}
+      <section className="py-24 bg-muted/10 relative">
         <div className="section-container">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {[
-              { value: "50+", label: "Automations Deployed" },
-              { value: "48hrs", label: "Average Delivery" },
-              { value: "15+", label: "Happy Clients" },
-              { value: "6,000+", label: "Hours Saved for Clients" },
-            ].map((stat, index) => (
+          <div className="text-center max-w-3xl mx-auto">
+            <Quote className="w-12 h-12 text-accent/30 mx-auto mb-8" />
+            <h2 className="text-3xl font-bold mb-8 italic">
+              "You don’t need the perfect background to build something extraordinary. You just need the courage to begin—and the strength to never stop."
+            </h2>
+            <div className="h-px w-20 bg-secondary mx-auto mb-10" />
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Today, RRK AUTOMATIONS stands as proof that success is not defined by degrees, but by dedication, skill, and the courage to start. What started as an idea has grown into a company delivering powerful, innovative solutions—especially in <span className="text-white font-bold tracking-wide">warehouse management systems</span> and automation technologies.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Team Placeholders */}
+      <section className="py-24 bg-background">
+        <div className="section-container">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-4 tracking-tight">Meet the Team</h2>
+            <p className="text-muted-foreground uppercase tracking-widest text-xs font-bold">The faces behind the automation</p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            {teamMembers.map((member, i) => (
               <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="text-center"
+                key={member.name}
+                initial={{ opacity: 0, scale: 0.9 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center group"
               >
-                <p className="text-4xl font-extrabold text-secondary mb-2">
-                  {stat.value}
-                </p>
-                <p className="text-muted-foreground text-sm">{stat.label}</p>
+                <div className="aspect-square rounded-2xl bg-muted border border-border mb-4 flex items-center justify-center text-3xl font-bold text-muted-foreground group-hover:bg-secondary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300 shadow-sm overflow-hidden">
+                  {/* Image Placeholder could go here */}
+                  <span className="group-hover:scale-125 transition-transform">{member.initials}</span>
+                </div>
+                <h4 className="font-bold text-sm mb-1">{member.name}</h4>
+                <p className="text-[10px] text-accent uppercase tracking-wider font-bold">{member.role}</p>
               </motion.div>
             ))}
           </div>
