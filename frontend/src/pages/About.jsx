@@ -10,7 +10,7 @@ const teamMembers = [
   { name: "Tejas Kumar", role: "C.T.O", initials: "TK" },
   { name: "Karthikeya", role: "C.F.O", initials: "K" },
   { name: "Uday Kumar", role: "C.O.O", initials: "UK" },
-  { name: "Devanshuu", role: "C.M.O", initials: "D" },
+  { name: "Devanshu", role: "C.M.O", initials: "D" },
 ];
 
 const About = () => {
