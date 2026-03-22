@@ -1,65 +1,35 @@
-/* @tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-
-body {
-  @apply bg-background text-foreground antialiased;
-  font-family: Inter, system-ui, sans-serif;
-  margin: 0;
-}
-
-
-.section-container {
-  @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
-}
-
-.shadow-card {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-}
-
-.shadow-elevated {
-  box-shadow: 0 10px 40px rgba(124, 58, 237, 0.2);
-}
-
-html {
-  scroll-behavior: smooth;
-} */
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ============================= */
-/* Global Base Styling */
+/* Global Base Styling           */
 /* ============================= */
 
 body {
   @apply bg-background text-foreground antialiased;
-  font-family: Inter, system-ui, sans-serif;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
   margin: 0;
 }
 
-/* Slight depth to entire app */
 #root {
   @apply min-h-screen;
 }
 
 /* ============================= */
-/* Layout Utilities */
+/* Layout Utilities              */
 /* ============================= */
 
 .section-container {
   @apply max-w-7xl mx-auto px-6 sm:px-8 lg:px-12;
 }
 
-/* Better vertical rhythm */
 section {
   @apply relative;
 }
 
 /* ============================= */
-/* Surface & Elevation System */
+/* Surface & Elevation System    */
 /* ============================= */
 
 .shadow-card {
@@ -70,24 +40,15 @@ section {
   box-shadow: 0 10px 40px rgba(124, 58, 237, 0.25);
 }
 
-/* Subtle futuristic glow utility */
 .shadow-glow {
   box-shadow: 0 0 25px rgba(124, 58, 237, 0.35);
 }
 
 /* ============================= */
-/* Typography Refinement */
+/* Typography                    */
 /* ============================= */
 
-h1 {
-  @apply tracking-tight;
-}
-
-h2 {
-  @apply tracking-tight;
-}
-
-h3 {
+h1, h2, h3 {
   @apply tracking-tight;
 }
 
@@ -96,10 +57,39 @@ p {
 }
 
 /* ============================= */
-/* Smooth Scroll */
+/* Smooth Scroll                 */
 /* ============================= */
 
 html {
   scroll-behavior: smooth;
 }
 
+/* ============================= */
+/* Page transition utility       */
+/* ============================= */
+
+.page-hero {
+  @apply relative overflow-hidden;
+  padding-top: 7rem; /* accounts for fixed navbar */
+}
+
+/* ============================= */
+/* Marquee Animation             */
+/* ============================= */
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 25s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
