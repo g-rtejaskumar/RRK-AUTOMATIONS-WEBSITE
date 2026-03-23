@@ -6,11 +6,11 @@ import CTABanner from "../components/CTABanner";
 
 const teamMembers = [
   { name: "S. Mahesh Kumar", role: "Founder", initials: "MK" },
-  { name: "S. Sai Teja", role: "M.D", initials: "ST" },
-  { name: "Tejas Kumar", role: "C.T.O", initials: "TK" },
-  { name: "Karthikeya", role: "C.F.O", initials: "K" },
-  { name: "Uday Kumar", role: "C.O.O", initials: "UK" },
-  { name: "Devanshu", role: "C.M.O", initials: "D" },
+  { name: "S. Sai Teja", role: "Managing Director", initials: "ST" },
+  { name: "Tejas Kumar", role: "Chief Technology Officer", initials: "TK" },
+  { name: "Karthikeya", role: "Chief Financial Officer", initials: "K" },
+  { name: "Uday Kumar", role: "Chief Operating Officer", initials: "UK" },
+  { name: "Devanshu", role: "Chief Marketing Officer", initials: "D" },
 ];
 
 const About = () => {
