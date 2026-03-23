@@ -134,7 +134,7 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-6">Friends: The Believers</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Through the most challenging phases, Mahesh was supported by a close circle of friends: 
-                <strong className="text-white"> Tejas Kumar, Karthikeya, Uday Kumar, and Devanshuu.</strong>
+                <strong className="text-white"> Tejas Kumar, Karthikeya, Uday Kumar, and Devanshu.</strong>
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 They stood with him during tough times—offering encouragement, ideas, and strength when it was needed the most. Their presence played a vital role in keeping the vision alive during moments of doubt.
