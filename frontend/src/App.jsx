@@ -7,6 +7,7 @@ import "./index.css";
 // Pages
 import Index from "./pages/index";
 import ScrollToTop from "./components/ScrollToTop";
+import AdminSwitcher from "./components/AdminSwitcher";
 const Services = lazy(() => import("./pages/Services"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const About = lazy(() => import("./pages/About"));
@@ -36,6 +37,7 @@ const App = () => {
       <Toaster />
       <BrowserRouter>
         <ScrollToTop />
+        <AdminSwitcher />
         <Suspense fallback={<Loading />}>
           <Routes>
             <Route path="/" element={<Index />} />
