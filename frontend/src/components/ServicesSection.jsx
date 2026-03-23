@@ -1,8 +1,9 @@
 import { Button } from "../components/ui/button";
-import { ArrowRight, Bot, Globe, Cpu, Loader2 } from "lucide-react";
+import { ArrowRight, Bot, Globe, Cpu, Loader2, Layers, ArrowDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "../lib/supabase";
+import { Link } from "react-router-dom";
 
 const categoryConfig = {
   automation: { title: "Automation Services", Icon: Bot },
@@ -12,7 +13,7 @@ const categoryConfig = {
 
 const ServicesSection = () => {
   const [activeCategory, setActiveCategory] = useState(null);
-  const [servicesData, setServicesData] = useState({ automation: [], web: [], agents: [] });
+  const [servicesData, setServicesData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -27,18 +28,26 @@ const ServicesSection = () => {
       .eq("is_active", true)
       .order("order_index", { ascending: true });
     
-    const grouped = { automation: [], web: [], agents: [] };
+    const grouped = {};
     if (data) {
       data.forEach(srv => {
-        if (grouped[srv.category]) {
-          grouped[srv.category].push({
-            name: srv.name,
-            description: srv.problem, // Mapping problem from DB as description here
-            outcome: srv.outcome,
-            cta: srv.cta
-          });
+        const cat = srv.category || "other";
+        if (!grouped[cat]) {
+          grouped[cat] = [];
         }
+        grouped[cat].push({
+          name: srv.name,
+          description: srv.description,
+          outcome: Array.isArray(srv.features) ? srv.features.join(" • ") : srv.features,
+          cta: srv.cta,
+          cta_link: srv.cta_link
+        });
       });
+      // Set the first category active by default if there are any
+      const keys = Object.keys(grouped);
+      if (keys.length > 0) {
+        setActiveCategory(keys[0]);
+      }
     }
     setServicesData(grouped);
     setIsLoading(false);
@@ -46,7 +55,7 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="py-28 bg-background relative overflow-hidden">
-      <div className="section-container relative z-10">
+      <div className="section-container relative z-10 max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
@@ -56,7 +65,7 @@ const ServicesSection = () => {
             Scalable Systems Built for Growth
           </h2>
           <p className="text-muted-foreground text-lg">
-            Click a category to explore the systems we design and deploy.
+            Explore the systems we design and deploy.
           </p>
         </div>
 
@@ -67,70 +76,88 @@ const ServicesSection = () => {
           </div>
         ) : (
           <div className="space-y-6">
-            {Object.entries(categoryConfig).map(([key, { title, Icon }]) => {
-              const categoryServices = servicesData[key] || [];
+            {Object.entries(servicesData).map(([key, categoryServices]) => {
+              const config = categoryConfig[key] || { 
+                title: key === "other" ? "Other Services" : key.charAt(0).toUpperCase() + key.slice(1), 
+                Icon: Layers 
+              };
+              const { title, Icon } = config;
               const isActive = activeCategory === key;
               
-              if (categoryServices.length === 0) return null; // Don't show category if empty
+              if (categoryServices.length === 0) return null;
 
               return (
-                <div key={key}>
+                <div key={key} className="flex flex-col gap-4">
+                  
+                  {/* Category Header Bar mimicking the screenshot */}
                   <motion.div
-                    whileHover={{ scale: 1.01 }}
                     onClick={() => setActiveCategory(isActive ? null : key)}
-                    className={`cursor-pointer bg-card border border-border rounded-2xl p-8 transition-all duration-300 ${
-                      isActive
-                        ? "border-secondary shadow-elevated"
-                        : "hover:border-secondary/30 hover:shadow-card"
-                    }`}
+                    className="cursor-pointer border border-[#ffffff15] rounded-xl p-5 transition-all duration-300 flex items-center justify-between shadow-lg"
+                    style={{
+                      background: "linear-gradient(to right, #0a0a0e, #130a1c)",
+                      borderColor: isActive ? "rgba(168, 85, 247, 0.4)" : "rgba(255, 255, 255, 0.08)",
+                      boxShadow: isActive ? "0 0 20px rgba(168, 85, 247, 0.15)" : "none"
+                    }}
                   >
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-4">
-                        <div className="w-14 h-14 rounded-xl bg-secondary/10 text-secondary flex items-center justify-center">
-                          <Icon className="w-7 h-7" />
-                        </div>
-                        <h3 className="text-2xl font-bold">{title}</h3>
+                    <div className="flex items-center gap-4">
+                      <div className="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center">
+                        <Icon className="w-5 h-5" />
                       </div>
-
-                      <ArrowRight
-                        className={`w-6 h-6 transition-transform ${
-                          isActive ? "rotate-90 text-secondary" : ""
-                        }`}
-                      />
+                      <h3 className="text-xl font-bold text-white tracking-wide">{title}</h3>
                     </div>
+
+                    <ArrowDown
+                      className={`w-5 h-5 text-purple-400 transition-transform duration-300 ${
+                        isActive ? "rotate-180" : "rotate-0 opacity-50"
+                      }`}
+                    />
                   </motion.div>
 
                   <AnimatePresence>
                     {isActive && (
                       <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: "auto" }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.4 }}
+                        initial={{ opacity: 0, height: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, height: "auto", scale: 1 }}
+                        exit={{ opacity: 0, height: 0, scale: 0.98 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
                         className="overflow-hidden"
                       >
-                        <div className="grid md:grid-cols-2 gap-6 mt-6">
+                        {/* 2-Column Grid mimicking the screenshot */}
+                        <div className="grid md:grid-cols-2 gap-4 pb-4">
                           {categoryServices.map((service) => (
                             <div
                               key={service.name}
-                              className="bg-muted/40 border border-border rounded-xl p-6 hover:border-secondary/30 transition-all flex flex-col justify-between"
+                              className="border border-[#ffffff10] rounded-xl p-6 transition-all hover:border-[#ffffff25] flex flex-col justify-between group"
+                              style={{ backgroundColor: "#0b0b0e" }}
                             >
                               <div>
-                                <h4 className="text-lg font-semibold mb-2">
+                                <h4 className="text-[17px] font-bold text-white mb-2 leading-tight">
                                   {service.name}
-                                </h4>
-                                <p className="text-sm text-muted-foreground mb-2 whitespace-pre-wrap">
-                                  {service.description}
+                               </h4>
+                                <p className="text-[13px] text-zinc-400 mb-3 whitespace-pre-wrap leading-relaxed">
+                                  <span className="font-semibold text-zinc-300 mr-1">Problem:</span> {service.description}
                                 </p>
-                                <p className="text-sm text-accent font-medium mb-4">
-                                  {service.outcome}
+                                <p className="text-[13px] font-semibold text-cyan-400 mb-6 drop-shadow-sm flex items-start">
+                                  <span className="text-cyan-500/80 mr-1 shrink-0">Solution:</span> <span>{service.outcome}</span>
                                 </p>
                               </div>
-                              <Button size="sm" variant="outline" asChild className="w-fit">
-                                <a href="#contact">
-                                  {service.cta || "Book Free Audit"}
-                                  <ArrowRight className="w-4 h-4 ml-1" />
-                                </a>
+                              <Button 
+                                size="sm" 
+                                variant="outline" 
+                                asChild 
+                                className="w-fit bg-transparent border-[#ffffff15] text-xs font-semibold hover:bg-white hover:text-black transition-colors"
+                              >
+                                {service.cta_link && service.cta_link.startsWith("http") ? (
+                                  <a href={service.cta_link} target="_blank" rel="noopener noreferrer" className="flex items-center">
+                                    {service.cta || "Book Free Audit"}
+                                    <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                  </a>
+                                ) : (
+                                  <Link to={service.cta_link || "/contact"} className="flex items-center">
+                                    {service.cta || "Book Free Audit"}
+                                    <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                  </Link>
+                                )}
                               </Button>
                             </div>
                           ))}

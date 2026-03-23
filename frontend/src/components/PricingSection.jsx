@@ -26,6 +26,13 @@ const PricingSection = () => {
     setIsLoading(false);
   };
 
+  const formatPrice = (price, symbol) => {
+    if (!price || String(price).toLowerCase() === "custom") return "Custom";
+    const str = String(price);
+    if (str.includes(symbol) || str.includes('₹') || str.includes('$')) return str;
+    return `${symbol}${str}`;
+  };
+
   return (
     <section id="pricing" className="relative py-28 bg-background overflow-hidden">
       <div className="section-container relative z-10">
@@ -105,7 +112,7 @@ const PricingSection = () => {
 
                   <div className="mb-8">
                     <span className="text-4xl font-extrabold">
-                      {isIndian ? (plan.price_inr || "Custom") : (plan.price_usd || "Custom")}
+                      {isIndian ? formatPrice(plan.price_inr, '₹') : formatPrice(plan.price_usd, '$')}
                     </span>
                     <span className="text-muted-foreground text-sm ml-2">starting</span>
                   </div>

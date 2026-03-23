@@ -11,7 +11,6 @@ import {
   Calendar,
   ChevronDown,
   Download,
-  RefreshCw,
   BarChart3,
   TrendingUp,
   Loader2
@@ -57,12 +56,17 @@ const Admin = () => {
 
   const updateLeadStatus = async (leadId, newStatus) => {
     try {
-      const { error } = await supabase
+      const { data, error } = await supabase
         .from("leads")
         .update({ status: newStatus })
-        .eq("id", leadId);
+        .eq("id", leadId)
+        .select();
 
       if (error) throw error;
+      
+      if (!data || data.length === 0) {
+        throw new Error("Update failed. You might need to add an 'UPDATE' policy for this table in your Supabase Dashboard RLS settings.");
+      }
 
       setLeads((prev) =>
         prev.map((lead) =>
@@ -74,12 +78,15 @@ const Admin = () => {
         title: "Status Updated",
         description: `Lead status changed to ${newStatus}`,
       });
-    } catch {
+    } catch (err) {
+      console.error(err);
       toast({
-        title: "Error",
-        description: "Failed to update status",
+        title: "Permission Error",
+        description: "Status did not save. Please ensure 'UPDATE' is allowed in your Supabase RLS policies for the 'leads' table.",
         variant: "destructive",
       });
+      // Optionally re-fetch to revert the optimistic UI if needed,
+      // but here we didn't optimistically update first, we only update state on success.
     }
   };
 
@@ -224,8 +231,21 @@ const Admin = () => {
               <ChevronDown className="w-4 h-4 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-muted-foreground" />
             </div>
             
-            <Button variant="outline" size="icon" onClick={fetchLeads} disabled={isLoadingLeads} className="h-[42px] w-[42px]">
-              <RefreshCw className={`w-4 h-4 ${isLoadingLeads ? "animate-spin" : ""}`} />
+            <Button 
+              variant="outline" 
+              onClick={fetchLeads} 
+              disabled={isLoadingLeads} 
+              className="h-[42px] px-3 flex items-center justify-center gap-2 hover:text-white"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="16" height="16" viewBox="0 0 24 24" 
+                fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" 
+                className={isLoadingLeads ? "animate-spin" : ""}
+              >
+                <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/>
+                <path d="M3 3v5h5"/>
+              </svg>
             </Button>
             
             <Button variant="outline" onClick={exportToCSV} className="hidden sm:flex h-[42px]">
