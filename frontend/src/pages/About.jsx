@@ -57,7 +57,7 @@ const About = () => {
               viewport={{ once: true }}
               className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10"
             >
-              <img src="/team_photo.png" alt="S. Mahesh Kumar - Founder" className="w-full h-[800px] object-cover" />
+              <img src="/mahesh_kumar.png" alt="S. Mahesh Kumar - Founder" className="w-full h-[800px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </motion.div>
             
