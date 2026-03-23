@@ -6,21 +6,12 @@ import CTABanner from "../components/CTABanner";
 
 const teamMembers = [
   { name: "S. Mahesh Kumar", role: "Founder", initials: "MK" },
-  { name: "S. Sai Teja", role: "Managing Director", initials: "ST" },
-  { name: "Tejas Kumar", role: "Chief Technology Officer", initials: "TK" },
-  { name: "Karthikeya", role: "Chief Financial Officer", initials: "K" },
-  { name: "Uday Kumar", role: "Chief Operating Officer", initials: "UK" },
-  { name: "Devanshu", role: "Chief Marketing Officer", initials: "D" },
+  { name: "S. Sai Teja", role: "M.D", initials: "ST" },
+  { name: "Tejas Kumar", role: "C.T.O", initials: "TK" },
+  { name: "Karthikeya", role: "C.F.O", initials: "K" },
+  { name: "Uday Kumar", role: "C.O.O", initials: "UK" },
+  { name: "Devanshuu", role: "C.M.O", initials: "D" },
 ];
-
-const teamImages = {
-  MK: "/Mahesh.jpeg",
-  ST: "/sai teja.jpeg",
-  TK: "/tejas.jpeg",
-  K: "/karthik.jpeg",
-  UK: "/uday.jpg",
-  D: "/deva.jpg"
-};
 
 const About = () => {
   return (
@@ -66,7 +57,7 @@ const About = () => {
               viewport={{ once: true }}
               className="relative aspect-square rounded-[3rem] overflow-hidden border border-white/10"
             >
-              <img src="/mahesh_kumar.png" alt="S. Mahesh Kumar - Founder" className="w-full h-[800px] object-cover" />
+              <img src="/team_photo.png" alt="S. Mahesh Kumar - Founder" className="w-full h-[800px] object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent" />
             </motion.div>
             
@@ -134,7 +125,7 @@ const About = () => {
               <h3 className="text-2xl font-bold mb-6">Friends: The Believers</h3>
               <p className="text-muted-foreground leading-relaxed">
                 Through the most challenging phases, Mahesh was supported by a close circle of friends: 
-                <strong className="text-white"> Tejas Kumar, Karthikeya, Uday Kumar, and Devanshu.</strong>
+                <strong className="text-white"> Tejas Kumar, Karthikeya, Uday Kumar, and Devanshuu.</strong>
               </p>
               <p className="text-muted-foreground leading-relaxed mt-4">
                 They stood with him during tough times—offering encouragement, ideas, and strength when it was needed the most. Their presence played a vital role in keeping the vision alive during moments of doubt.
@@ -177,13 +168,9 @@ const About = () => {
                 transition={{ delay: i * 0.1 }}
                 className="text-center group"
               >
-                <div className="relative w-full pb-[120%] rounded-2xl overflow-hidden mb-4 group">
-                  <img
-                    src={teamImages[member.initials]}
-                    alt={`${member.name} - ${member.role}`}
-                    className="w-full h-full object-cover absolute inset-0"
-                    style={{ objectPosition: getFacePosition(member.initials) }}
-                  />
+                <div className="aspect-square rounded-2xl bg-muted border border-border mb-4 flex items-center justify-center text-3xl font-bold text-muted-foreground group-hover:bg-secondary/10 group-hover:text-secondary group-hover:border-secondary/30 transition-all duration-300 shadow-sm overflow-hidden">
+                  {/* Image Placeholder could go here */}
+                  <span className="group-hover:scale-125 transition-transform">{member.initials}</span>
                 </div>
                 <h4 className="font-bold text-sm mb-1">{member.name}</h4>
                 <p className="text-[10px] text-accent uppercase tracking-wider font-bold">{member.role}</p>
@@ -199,15 +186,3 @@ const About = () => {
 };
 
 export default About;
-
-const getFacePosition = (initials) => {
-  const positions = {
-    ST: 'center 40%',
-    TK: 'center 1%',
-    K: 'center 30%',
-    D: 'center 45%',
-    UK: 'center 50%',
-    MK: 'center 20%'
-  };
-  return positions[initials] || 'center 30%';
-};

@@ -1,16 +1,9 @@
 import Layout from "../components/Layout";
 import SEOHead from "../components/SEOHead";
 import PricingSection from "../components/PricingSection";
+import FAQSection from "../components/FAQSection";
 import CTABanner from "../components/CTABanner";
 import { motion } from "framer-motion";
-import { ShieldCheck, Clock, Headphones, Zap } from "lucide-react";
-
-const trustPoints = [
-  { icon: Clock, text: "48-Hour Delivery" },
-  { icon: ShieldCheck, text: "100% Satisfaction Guarantee" },
-  { icon: Headphones, text: "Dedicated Support" },
-  { icon: Zap, text: "No Hidden Fees" },
-];
 
 const Pricing = () => {
   return (
@@ -68,60 +61,7 @@ const Pricing = () => {
       </section>
 
       <PricingSection />
-
-      {/* Trust Banner */}
-      <section className="py-16 bg-background">
-        <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="relative rounded-2xl border border-border bg-gradient-to-r from-secondary/5 via-card to-accent/5 p-8 sm:p-12"
-          >
-            <div className="text-center mb-10">
-              <h3 className="text-2xl font-bold mb-2">
-                Why Businesses Choose Us
-              </h3>
-              <p className="text-muted-foreground">
-                Every plan includes these guarantees — no exceptions.
-              </p>
-            </div>
-
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              {trustPoints.map((point, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 15 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="flex flex-col items-center text-center gap-3"
-                >
-                  <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center">
-                    <point.icon className="w-6 h-6 text-secondary" />
-                  </div>
-                  <span className="text-sm font-semibold text-foreground/90">{point.text}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* Custom Plan CTA */}
-            <div className="mt-10 text-center">
-              <p className="text-muted-foreground text-sm">
-                Need a custom plan?{" "}
-                <a
-                  href="/contact"
-                  className="text-secondary font-semibold hover:underline"
-                >
-                  Let's talk →
-                </a>
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
+      <FAQSection />
       <CTABanner />
     </Layout>
   );
