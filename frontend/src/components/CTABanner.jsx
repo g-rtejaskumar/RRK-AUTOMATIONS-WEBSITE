@@ -1,5 +1,5 @@
 import { Button } from "./ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -46,11 +46,36 @@ const CTABanner = () => {
               </a>
             </Button>
 
-            <Button variant="outline" size="xl">
-              <Link to="/contact" className="flex items-center gap-2">
-                Contact Us
+            {/* Premium Contact Us Button */}
+            <motion.div
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-3 px-8 py-4 text-base font-medium rounded-lg overflow-hidden transition-all duration-300"
+                style={{
+                  background: "rgba(124, 58, 237, 0.08)",
+                  backdropFilter: "blur(12px)",
+                  border: "1px solid rgba(124, 58, 237, 0.3)",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.background = "rgba(124, 58, 237, 0.15)";
+                  e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.6)";
+                  e.currentTarget.style.boxShadow = "0 0 30px rgba(124, 58, 237, 0.25)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.background = "rgba(124, 58, 237, 0.08)";
+                  e.currentTarget.style.borderColor = "rgba(124, 58, 237, 0.3)";
+                  e.currentTarget.style.boxShadow = "none";
+                }}
+              >
+                <MessageCircle className="w-5 h-5 text-secondary transition-transform duration-300 group-hover:scale-110" />
+                <span className="text-foreground">Contact Us</span>
+                <ArrowRight className="w-4 h-4 text-secondary opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
               </Link>
-            </Button>
+            </motion.div>
           </div>
 
           <p className="text-sm text-muted-foreground mt-6">
