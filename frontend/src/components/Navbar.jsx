@@ -85,15 +85,6 @@ const Navbar = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
-            {user && isAdmin && (
-              <Button variant="ghost" size="sm">
-                <Link to="/admin" className="flex items-center">
-                  <Shield className="w-4 h-4 mr-1" />
-                  Admin
-                </Link>
-              </Button>
-            )}
-
             <Button variant="cta" size="sm">
               <Link to="/contact">Get Started</Link>
             </Button>
@@ -133,16 +124,6 @@ const Navbar = () => {
                     {link.name}
                   </Link>
                 ))}
-
-                {user && isAdmin && (
-                  <Link
-                    to="/admin"
-                    className="text-sm text-muted-foreground hover:text-foreground flex items-center"
-                  >
-                    <Shield className="w-4 h-4 mr-2" />
-                    Admin Dashboard
-                  </Link>
-                )}
 
                 <Button variant="cta" size="sm" className="w-full mt-2">
                   <Link to="/contact">Get Started</Link>

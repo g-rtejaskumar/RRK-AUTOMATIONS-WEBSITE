@@ -33,7 +33,7 @@ export function Toaster() {
   return (
     <div className="fixed top-6 right-6 z-50 space-y-4 w-[320px]">
       <AnimatePresence>
-        {toasts.map((toast) => (
+        {toasts.map((toast) => toast.open && (
           <motion.div
             key={toast.id}
             initial={{ opacity: 0, y: -20, scale: 0.95 }}
