@@ -12,7 +12,6 @@ const teamMembers = [
   { name: "Uday Kumar", role: "Chief Operating Officer", initials: "UK" },
   { name: "Devanshu", role: "Chief Marketing Officer", initials: "D" },
 ];
-
 const teamImages = {
   MK: "/Mahesh.jpeg",
   ST: "/sai teja.jpeg",
