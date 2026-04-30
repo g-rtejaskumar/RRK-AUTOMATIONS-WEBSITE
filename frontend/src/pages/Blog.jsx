@@ -68,9 +68,59 @@ const Blog = () => {
     <Layout>
       <SEOHead
         title="Blog & Resources"
-        description="Stay updated with the latest trends in AI automation, WhatsApp marketing, and the ABCB initiative from RRK Automations."
+        description="Global insights on AI automation, WhatsApp marketing, and technical business growth."
         path="/blog"
+        keywords="global AI blog, automation trends worldwide, business automation resources"
       />
+
+      {/* Structured Data: Blog + BreadcrumbList + BlogPosting */}
+      <script type="application/ld+json">
+      {JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "Blog",
+          "name": "RRK Automations Blog",
+          "url": "https://rrkautomations.com/blog",
+          "description": "Insights on AI automation, WhatsApp marketing, and business growth strategies.",
+          "publisher": {
+            "@type": "Organization",
+            "name": "RRK Automations",
+            "url": "https://rrkautomations.com",
+            "logo": "https://rrkautomations.com/logorrk.png"
+          },
+          "blogPost": posts.map(post => ({
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt,
+            "image": post.image,
+            "datePublished": post.date,
+            "author": {
+              "@type": "Organization",
+              "name": "RRK Automations"
+            },
+            "url": `https://rrkautomations.com${post.link}`
+          }))
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://rrkautomations.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://rrkautomations.com/blog"
+            }
+          ]
+        }
+      ])}
+      </script>
 
       {/* Hero */}
       <section className="page-hero py-20 bg-background">

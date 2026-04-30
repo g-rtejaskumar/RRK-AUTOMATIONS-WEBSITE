@@ -26,10 +26,51 @@ const About = () => {
     <Layout>
       <SEOHead
         title="Our Story - RRK Automations"
-        description="The story of RRK Automations: A journey of belief, resilience, and building something from nothing by founder S. Mahesh Kumar."
+        description="The story of RRK Automations: A global journey of belief, resilience, and building expert AI automation solutions for a worldwide market."
         path="/about"
-        keywords="Mahesh Kumar, RRK Automations founder, warehouse management automation, startup story"
+        keywords="S. Mahesh Kumar, RRK Automations Founder, Global AI Automation Agency, Worldwide Chatbot Experts, Business Automation Consultancy, AI Workflow Experts, Custom AI Solutions Worldwide, Automation Agency History, Remote AI Development, Global SaaS Automation, Autonomous Agent Experts, WhatsApp API Specialists"
       />
+
+      {/* Structured Data: AboutPage + BreadcrumbList + Person */}
+      <script type="application/ld+json">
+      {JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "AboutPage",
+          "name": "About RRK Automations",
+          "url": "https://rrkautomations.com/about",
+          "description": "The global story of RRK Automations, founded by S. Mahesh Kumar.",
+          "mainEntity": {
+            "@type": "ProfessionalService",
+            "name": "RRK Automations",
+            "founder": {
+              "@type": "Person",
+              "name": "S. Mahesh Kumar",
+              "jobTitle": "Founder"
+            },
+            "areaServed": "Worldwide"
+          }
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://rrkautomations.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "About",
+              "item": "https://rrkautomations.com/about"
+            }
+          ]
+        }
+      ])}
+      </script>
 
       {/* Hero Section */}
       <section className="relative py-24 bg-background overflow-hidden">

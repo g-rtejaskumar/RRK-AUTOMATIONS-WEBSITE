@@ -9,9 +9,9 @@ const Contact = () => {
     <Layout>
       <SEOHead
         title="Contact Us"
-        description="Get in touch with RRK Automations. Book a free automation audit, chat on WhatsApp, or send us a message. We respond within 24 hours."
+        description="Get in touch with RRK Automations. Global AI automation audit and worldwide WhatsApp support. We respond within 24 hours."
         path="/contact"
-        keywords="contact RRK Automations, book automation audit, WhatsApp automation consultation"
+        keywords="Contact AI Automation Agency, Book Free Automation Audit, Hire WhatsApp Chatbot Developer, Global Automation Support, Custom AI Solution Consultation, Business Automation Experts Contact, WhatsApp API Support Worldwide, Remote Automation Consulting, AI Strategy Session, Lead Generation Consultation, CRM Integration Support, Scale Business with AI Contact"
       />
 
       {/* Structured Data: ContactPage & Breadcrumb */}

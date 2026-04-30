@@ -23,8 +23,24 @@ const faqs = [
     a: "We work closely with you during the build process and demo the automation before final deployment. If something doesn't meet your requirements, we'll revise it until it does.",
   },
   {
+    q: "Do you provide technical services beyond AI and automation?",
+    a: "Yes. We act as a Total Technical Partner. We provide every technical service a modern business needs, including full-stack web/mobile development, custom enterprise software (like WMS), cloud architecture, cybersecurity, and data analytics.",
+  },
+  {
     q: "Can you work with my existing CRM and tools?",
     a: "Absolutely. We design automations around your existing tech stack. We integrate with popular CRMs, email tools, payment gateways, and communication platforms.",
+  },
+  {
+    q: "Can you build custom systems beyond the listed services?",
+    a: "Yes. If your business needs a technical system, we can design and build a custom solution around your workflow.",
+  },
+  {
+    q: "Do you work with clients outside India?",
+    a: "Yes. We are remote-first and serve clients worldwide, with a focus on USA, UK, Australia, and India.",
+  },
+  {
+    q: "Are you open 24/7?",
+    a: "Yes. We are open 24/7 and typically respond within 24 hours.",
   },
   {
     q: "Do I need any technical knowledge to use the automations?",
@@ -42,11 +58,33 @@ const FAQ = () => {
   return (
     <Layout>
       <SEOHead
-        title="Frequently Asked Questions"
-        description="Find answers to common questions about RRK Automations' services, setup timeline, pricing, and support."
+        title="FAQ — Technical Services & Automation"
+        description="Find answers to common questions about our technical services, AI automation, web development, and enterprise systems."
         path="/faq"
-        keywords="FAQ, automation questions, RRK Automations help, chatbot setup, automation support"
+        keywords="technical services FAQ, AI automation help, software development questions, enterprise tech support, business automation guide"
       />
+
+      {/* Structured Data: BreadcrumbList */}
+      <script type="application/ld+json">
+      {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://rrkautomations.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "FAQ",
+            "item": "https://rrkautomations.com/faq"
+          }
+        ]
+      })}
+      </script>
 
       {/* Hero */}
       <section className="relative pt-32 pb-20 bg-background overflow-hidden">

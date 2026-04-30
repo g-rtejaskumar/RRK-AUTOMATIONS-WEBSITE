@@ -17,31 +17,69 @@ const Pricing = () => {
     <Layout>
       <SEOHead
         title="Pricing"
-        description="Transparent automation pricing starting from ₹25,000 / $299. Choose from Starter, Growth, or Business plans. No hidden fees."
+        description="Global automation pricing starting from $299 USD / €275 EUR. Transparent plans for businesses worldwide. No hidden fees."
         path="/pricing"
-        keywords="automation pricing, WhatsApp automation cost, AI chatbot pricing, business automation plans"
+        keywords="AI Automation Pricing, WhatsApp Chatbot Cost, Business Automation Plans, Lead Generation Pricing, E-commerce Automation Cost, AI Agent Price, Autonomous Agent Subscription, Workflow Automation ROI, Agentic AI Investment, LLM Business Cost, OpenAI Enterprise Pricing, WhatsApp Business API Cost, Automated Messaging Plans, Conversational AI ROI, WhatsApp Sales Funnel Price, Lead Qualification System Cost, Automated Sales Follow-up Price, CRM Integration Pricing, HubSpot Automation Cost, Salesforce Integration Price, Automated Scheduling Tool Cost, Calendly Pricing, Automation ROI Guide, Cost-effective AI Solutions, Affordable Business Automation"
       />
 
-      {/* Structured Data: Breadcrumb */}
+      {/* Structured Data: Breadcrumb + Product Offers */}
       <script type="application/ld+json">
-      {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://rrkautomations.com/"
+      {JSON.stringify([
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://rrkautomations.com/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Pricing",
+              "item": "https://rrkautomations.com/pricing"
+            }
+          ]
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "Product",
+          "name": "RRK Automations Services",
+          "description": "AI automation, WhatsApp chatbots, and custom technical systems for businesses.",
+          "brand": {
+            "@type": "Brand",
+            "name": "RRK Automations"
           },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Pricing",
-            "item": "https://rrkautomations.com/pricing"
-          }
-        ]
-      })}
+          "offers": [
+            {
+              "@type": "Offer",
+              "name": "Starter Plan",
+              "price": "299",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://rrkautomations.com/pricing"
+            },
+            {
+              "@type": "Offer",
+              "name": "Growth Plan",
+              "price": "599",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://rrkautomations.com/pricing"
+            },
+            {
+              "@type": "Offer",
+              "name": "Business Plan",
+              "price": "999",
+              "priceCurrency": "USD",
+              "availability": "https://schema.org/InStock",
+              "url": "https://rrkautomations.com/pricing"
+            }
+          ]
+        }
+      ])}
       </script>
 
       {/* Hero */}

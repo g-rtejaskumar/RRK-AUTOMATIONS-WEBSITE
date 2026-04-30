@@ -1,3 +1,14 @@
 /sitemap.xml /sitemap.xml 200
 /robots.txt /robots.txt 200
+/llms.txt /llms.txt 200
+/index.md /index.md 200
+/about/index.md /about/index.md 200
+/services/index.md /services/index.md 200
+/pricing/index.md /pricing/index.md 200
+/contact/index.md /contact/index.md 200
+/case-studies/index.md /case-studies/index.md 200
+/blog/index.md /blog/index.md 200
+/faq/index.md /faq/index.md 200
+/privacy-policy/index.md /privacy-policy/index.md 200
+/terms-of-service/index.md /terms-of-service/index.md 200
 /*    /index.html   200

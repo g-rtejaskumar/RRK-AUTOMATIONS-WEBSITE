@@ -10,9 +10,9 @@ const CaseStudies = () => {
     <Layout>
       <SEOHead
         title="Case Studies"
-        description="See how businesses are using RRK Automations to respond faster, capture more leads, and increase revenue with AI & WhatsApp automation."
+        description="See how businesses worldwide are using RRK Automations to respond faster, capture more leads, and increase revenue with AI & WhatsApp automation."
         path="/case-studies"
-        keywords="automation case studies, WhatsApp automation results, AI automation success stories"
+        keywords="automation case studies global, worldwide chatbot results, AI automation success stories"
       />
 
       {/* Structured Data: Breadcrumb */}

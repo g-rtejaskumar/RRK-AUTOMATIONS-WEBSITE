@@ -10,9 +10,9 @@ const Services = () => {
     <Layout>
       <SEOHead
         title="Services"
-        description="Explore our AI automation, WhatsApp chatbot, e-commerce automation, and web services. Custom-built systems deployed in 48 hours."
+        description="Comprehensive technical services for businesses worldwide. AI automation, full-stack web/mobile development, enterprise software, and cloud solutions."
         path="/services"
-        keywords="automation services, WhatsApp chatbot, AI agents, lead automation, e-commerce automation"
+        keywords="Full-Stack Development, Mobile App Development, AI Automation, WhatsApp Chatbots, Enterprise Software, Cloud Architecture, DevOps Services, Cybersecurity Audit, Database Management, ERP Integration, CRM Setup, WMS Development, Digital Transformation"
       />
 
       {/* Structured Data: Service & Breadcrumb */}

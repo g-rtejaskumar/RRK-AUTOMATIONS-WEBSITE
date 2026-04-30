@@ -24,6 +24,18 @@ const faqs = [
     a: "Absolutely. We design automations around your existing tech stack. We integrate with popular CRMs, email tools, payment gateways, and communication platforms.",
   },
   {
+    q: "Can you build custom systems beyond the listed services?",
+    a: "Yes. If your business needs a technical system, we can design and build a custom solution around your workflow.",
+  },
+  {
+    q: "Do you work with clients outside India?",
+    a: "Yes. We are remote-first and serve clients worldwide, with a focus on USA, UK, Australia, and India.",
+  },
+  {
+    q: "Are you open 24/7?",
+    a: "Yes. We are open 24/7 and typically respond within 24 hours.",
+  },
+  {
     q: "Do I need any technical knowledge to use the automations?",
     a: "No. We build everything so it works on autopilot. You'll receive a walkthrough and documentation. Our systems are designed for non-technical business owners.",
   },
