@@ -8,6 +8,7 @@ import TestimonialsSection from "../components/TestimonialsSection";
 import WhyUsSection from "../components/WhyUsSection";
 import CTABanner from "../components/CTABanner";
 import FeaturesGrid from "../components/FeaturesGrid";
+import PortfolioSection from "../components/PortfolioSection";
 
 const Index = () => {
   return (
@@ -56,6 +57,7 @@ const Index = () => {
       <ProblemSolutionSection />
       <HowItWorksSection />
       <FeaturesGrid />
+      <PortfolioSection />
       <TestimonialsSection />
       <WhyUsSection />
       <CTABanner />
