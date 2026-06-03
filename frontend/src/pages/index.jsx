@@ -53,11 +53,11 @@ const Index = () => {
       ])}
       </script>
       <HeroSection />
+      <PortfolioSection />
       <TrustedBySection />
       <ProblemSolutionSection />
       <HowItWorksSection />
       <FeaturesGrid />
-      <PortfolioSection />
       <TestimonialsSection />
       <WhyUsSection />
       <CTABanner />
