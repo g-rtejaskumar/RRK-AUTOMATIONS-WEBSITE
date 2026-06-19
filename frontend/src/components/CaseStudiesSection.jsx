@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { TrendingUp, Zap, Clock, ArrowRight } from "lucide-react";
-import { Link } from "react-router-dom";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const caseStudies = [
   {
@@ -33,6 +33,7 @@ const caseStudies = [
 ];
 
 const CaseStudiesSection = () => {
+  const { openGate } = useCalendlyGate();
   return (
     <section className="py-28 bg-muted/30">
 
@@ -81,13 +82,14 @@ const CaseStudiesSection = () => {
                 <p className="text-white font-bold text-xl mb-1 text-left">Modern AI Dashboards</p>
                 <p className="text-white/70 text-sm text-left">Real-time lead tracking & conversion analytics</p>
              </div>
-             <Link
-               to="/contact"
+             <button
+               type="button"
+               onClick={() => openGate({ source: "case-studies-demo" })}
                className="bg-secondary hover:bg-secondary/80 text-white text-xs font-bold px-5 py-2.5 rounded-full hidden sm:flex items-center gap-2 transition-all duration-300 hover:shadow-lg hover:shadow-secondary/40"
              >
                LIVE DEMO
                <ArrowRight className="w-3.5 h-3.5" />
-             </Link>
+             </button>
           </div>
         </motion.div>
 

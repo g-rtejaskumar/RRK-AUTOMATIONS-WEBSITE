@@ -1,6 +1,8 @@
 import { Button } from "../components/ui/button";
 import { MessageCircle, Calendar, ArrowRight, Zap } from "lucide-react";
 import { motion } from "framer-motion";
+import { useCalendlyGate } from "./CalendlyLeadGate";
+import { useIsMobile } from "../hooks/useIsMobile";
 
 const containerVariants = {
   hidden: {},
@@ -17,6 +19,9 @@ const fadeUp = {
 };
 
 const HeroSection = () => {
+  const { openGate } = useCalendlyGate();
+  const isMobile = useIsMobile();
+
   return (
     <section className="relative min-h-[95vh] flex items-center overflow-hidden bg-background">
 
@@ -84,17 +89,17 @@ const HeroSection = () => {
               variants={fadeUp}
               className="flex flex-col sm:flex-row gap-4 items-start"
             >
-              <Button variant="cta" size="xl" className="w-full sm:w-auto">
-                <a
-                  href="https://calendly.com/rrkautomations/new-meeting"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2"
-                >
+              <Button
+                variant="cta"
+                size="xl"
+                className="w-full sm:w-auto"
+                onClick={() => openGate({ source: "hero" })}
+              >
+                <span className="flex items-center gap-2">
                   <Calendar className="w-5 h-5" />
                   Book Free Audit
                   <ArrowRight className="w-5 h-5" />
-                </a>
+                </span>
               </Button>
 
               <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
@@ -132,29 +137,33 @@ const HeroSection = () => {
             </motion.div>
           </motion.div>
 
-          {/* Hero Image / Visual */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, x: 40 }}
-            animate={{ opacity: 1, scale: 1.1, x: 30, y: -100 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="hidden lg:block relative"
-          >
-             <div className="relative z-10 rounded-[2rem] border border-white/10 bg-card/30 backdrop-blur-2xl p-2 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] overflow-hidden">
-                <video 
-                  src="/hero-video.mp4" 
-                  autoPlay 
-                  loop 
-                  muted 
-                  playsInline 
-                  className="w-full rounded-2xl object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-tr from-secondary/10 via-transparent to-accent/10 pointer-events-none" />
-             </div>
-             
-             {/* Decorative Elements */}
-             <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary/20 rounded-full blur-[100px] animate-pulse" />
-             <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-accent/20 rounded-full blur-[100px] animate-pulse delay-700" />
-          </motion.div>
+          {/* Hero Image / Visual — only mounted on desktop to save mobile data */}
+          {!isMobile && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9, x: 40 }}
+              animate={{ opacity: 1, scale: 1.1, x: 30, y: -100 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="hidden lg:block relative"
+            >
+               <div className="relative z-10 rounded-[2rem] border border-white/10 bg-card/30 backdrop-blur-2xl p-2 shadow-[0_32px_64px_-16px_rgba(0,0,0,0.5)] overflow-hidden">
+                  <video
+                    src="/hero-video-opt.mp4"
+                    poster="/hero-poster.jpg"
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    preload="metadata"
+                    className="w-full rounded-2xl object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-tr from-secondary/10 via-transparent to-accent/10 pointer-events-none" />
+               </div>
+
+               {/* Decorative Elements */}
+               <div className="absolute -top-10 -right-10 w-64 h-64 bg-secondary/20 rounded-full blur-[100px] animate-pulse" />
+               <div className="absolute -bottom-10 -left-10 w-64 h-64 bg-accent/20 rounded-full blur-[100px] animate-pulse delay-700" />
+            </motion.div>
+          )}
         </div>
       </div>
     </section>

@@ -3,6 +3,7 @@ import { Menu, X, Shield } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/AuthContext";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -20,6 +21,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { user, isAdmin } = useAuth();
+  const { openGate } = useCalendlyGate();
   const location = useLocation();
 
   useEffect(() => {
@@ -49,6 +51,10 @@ const Navbar = () => {
             <img
               src="/logorrk.png"
               alt="RRK Automations"
+              width="52"
+              height="40"
+              fetchPriority="high"
+              decoding="async"
               className="w-13 h-10 object-contain group-hover:scale-110 transition-transform"
             />
             <span className="font-bold text-foreground text-lg tracking-wide">
@@ -85,8 +91,8 @@ const Navbar = () => {
 
           {/* Desktop Actions */}
           <div className="hidden md:flex items-center gap-3">
-            <Button variant="cta" size="sm">
-              <Link to="/contact">Get Started</Link>
+            <Button variant="cta" size="sm" onClick={() => openGate({ source: "navbar" })}>
+              Get Started
             </Button>
           </div>
 
@@ -125,8 +131,13 @@ const Navbar = () => {
                   </Link>
                 ))}
 
-                <Button variant="cta" size="sm" className="w-full mt-2">
-                  <Link to="/contact">Get Started</Link>
+                <Button
+                  variant="cta"
+                  size="sm"
+                  className="w-full mt-2"
+                  onClick={() => openGate({ source: "navbar-mobile" })}
+                >
+                  Get Started
                 </Button>
               </div>
             </motion.div>

@@ -318,13 +318,14 @@ const AdminServices = () => {
   const [services, setServices] = useState([]);
   const [isNewCategory, setIsNewCategory] = useState(false);
 
+  // Note: services has no cta_link column (verified schema). Service CTAs
+  // route to /contact in the UI.
   const [form, setForm] = useState({
     name: "",
     problem: "",
     outcome: "",
     category: "automation",
-    cta: "Book Free Audit",
-    cta_link: "/contact"
+    cta: "Book Free Audit"
   });
 
   const [editId, setEditId] = useState(null);
@@ -349,7 +350,6 @@ const AdminServices = () => {
       features: [form.outcome],
       category: form.category.toLowerCase().trim() || "automation",
       cta: form.cta || "Book Free Audit",
-      cta_link: form.cta_link || "/contact",
       is_active: true
     });
 
@@ -365,8 +365,7 @@ const AdminServices = () => {
         description: form.problem,
         features: [form.outcome],
         category: form.category.toLowerCase().trim() || "automation",
-        cta: form.cta || "Book Free Audit",
-        cta_link: form.cta_link || "/contact"
+        cta: form.cta || "Book Free Audit"
       })
       .eq("id", editId);
 
@@ -399,8 +398,7 @@ const AdminServices = () => {
       problem: service.description || "",
       outcome: Array.isArray(service.features) ? service.features[0] : (service.features || ""),
       category: service.category || "automation",
-      cta: service.cta || "Book Free Audit",
-      cta_link: service.cta_link || "/contact"
+      cta: service.cta || "Book Free Audit"
     });
   };
 
@@ -410,8 +408,7 @@ const AdminServices = () => {
       problem: "",
       outcome: "",
       category: "automation",
-      cta: "Book Free Audit",
-      cta_link: "/contact"
+      cta: "Book Free Audit"
     });
     setEditId(null);
     setIsNewCategory(false);
@@ -491,26 +488,14 @@ const AdminServices = () => {
           />
         </div>
 
-        <div className="flex flex-col md:flex-row gap-4 mb-2">
-          <div className="flex-1">
-            <label className="text-xs font-medium text-muted-foreground mb-1 block">CTA Text</label>
-            <input
-              placeholder="e.g. Book Free Audit"
-              value={form.cta}
-              onChange={(e)=>setForm({...form,cta:e.target.value})}
-              className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow"
-            />
-          </div>
-
-          <div className="flex-1">
-            <label className="text-xs font-medium text-muted-foreground mb-1 block">CTA Link (URL)</label>
-            <input
-              placeholder="e.g. /contact or https://calendly.com/..."
-              value={form.cta_link || "/contact"}
-              onChange={(e)=>setForm({...form,cta_link:e.target.value})}
-              className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow text-cyan-400"
-            />
-          </div>
+        <div className="mb-2">
+          <label className="text-xs font-medium text-muted-foreground mb-1 block">CTA Text</label>
+          <input
+            placeholder="e.g. Book Free Audit"
+            value={form.cta}
+            onChange={(e)=>setForm({...form,cta:e.target.value})}
+            className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow"
+          />
         </div>
 
         <div className="flex gap-3 pt-4 border-t border-border mt-6">
@@ -558,10 +543,6 @@ const AdminServices = () => {
 
               <div className="inline-block bg-muted text-muted-foreground text-[10px] uppercase font-bold px-2 py-1 rounded-md mt-1">
                 Category: <span className="text-foreground">{service.category}</span>
-              </div>
-              
-              <div className="mt-2 text-xs text-muted-foreground">
-                <span className="opacity-70">CTA Link:</span> <span className="text-cyan-500 border border-cyan-500/20 bg-cyan-500/10 px-1 py-0.5 rounded">{service.cta_link || "/contact"}</span>
               </div>
             </div>
 

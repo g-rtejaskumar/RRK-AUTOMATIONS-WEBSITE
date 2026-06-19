@@ -33,16 +33,26 @@ const AdminPricing = () => {
     setPlans(data || []);
   };
 
+  // Verified schema: price_inr/price_usd are integer, features is jsonb.
+  const toIntOrNull = (v) => {
+    if (v === null || v === undefined || String(v).trim() === "") return null;
+    const n = parseInt(String(v).replace(/[^\d-]/g, ""), 10);
+    return Number.isFinite(n) ? n : null;
+  };
+
   const handleSave = async () => {
-    // Determine feature structure (save as newline string since that's mostly how text inputs work well with CSV/lists, or array if Postgres text[])
-    // We send string, and our frontend PricingSection.jsx handles spltting by newline just in case
-    
+    // features (jsonb): store a clean JSON array of strings, one per textarea line.
+    const featuresArray = form.features
+      .split("\n")
+      .map((f) => f.trim())
+      .filter(Boolean);
+
     const payload = {
       name: form.name,
       description: form.description,
-      price_inr: form.price_inr,
-      price_usd: form.price_usd,
-      features: form.features,
+      price_inr: toIntOrNull(form.price_inr), // integer column — numeric only
+      price_usd: toIntOrNull(form.price_usd), // integer column — numeric only
+      features: featuresArray,                // jsonb array
       cta: form.cta,
       popular: form.popular,
       order_index: form.order_index
@@ -64,8 +74,9 @@ const AdminPricing = () => {
     setForm({
       name: plan.name || "",
       description: plan.description || "",
-      price_inr: plan.price_inr || "",
-      price_usd: plan.price_usd || "",
+      price_inr: plan.price_inr ?? "",
+      price_usd: plan.price_usd ?? "",
+      // features is jsonb (array). Defensive fallback handles legacy string rows.
       features: Array.isArray(plan.features) ? plan.features.join("\n") : (plan.features || ""),
       cta: plan.cta || "Get Started",
       popular: plan.popular || false,
@@ -126,12 +137,12 @@ const AdminPricing = () => {
 
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label className="text-xs font-medium text-muted-foreground mb-1 block">Price (INR)</label>
-              <input value={form.price_inr} onChange={e => setForm({...form, price_inr: e.target.value})} className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow" placeholder="e.g. ₹25,000" />
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">Price (INR) — number only</label>
+              <input type="number" min="0" value={form.price_inr} onChange={e => setForm({...form, price_inr: e.target.value})} className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow" placeholder="e.g. 25000" />
             </div>
             <div>
-              <label className="text-xs font-medium text-muted-foreground mb-1 block">Price (USD)</label>
-              <input value={form.price_usd} onChange={e => setForm({...form, price_usd: e.target.value})} className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow" placeholder="e.g. $299" />
+              <label className="text-xs font-medium text-muted-foreground mb-1 block">Price (USD) — number only</label>
+              <input type="number" min="0" value={form.price_usd} onChange={e => setForm({...form, price_usd: e.target.value})} className="w-full bg-background border border-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-secondary/50 transition-shadow" placeholder="e.g. 299" />
             </div>
           </div>
 
@@ -171,11 +182,11 @@ const AdminPricing = () => {
             <div className="flex justify-between items-center mb-4 pb-4 border-b border-border">
               <div>
                 <p className="text-xs text-muted-foreground">INR</p>
-                <p className="font-semibold">{plan.price_inr}</p>
+                <p className="font-semibold">{plan.price_inr != null ? `₹${Number(plan.price_inr).toLocaleString("en-IN")}` : "Custom"}</p>
               </div>
               <div className="text-right">
                 <p className="text-xs text-muted-foreground">USD</p>
-                <p className="font-semibold">{plan.price_usd}</p>
+                <p className="font-semibold">{plan.price_usd != null ? `$${Number(plan.price_usd).toLocaleString("en-US")}` : "Custom"}</p>
               </div>
             </div>
 

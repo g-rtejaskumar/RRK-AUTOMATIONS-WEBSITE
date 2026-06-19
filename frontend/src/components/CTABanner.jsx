@@ -2,8 +2,10 @@ import { Button } from "./ui/button";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const CTABanner = () => {
+  const { openGate } = useCalendlyGate();
   return (
     <section className="py-20 relative overflow-hidden">
       {/* Gradient Background */}
@@ -34,16 +36,15 @@ const CTABanner = () => {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="cta" size="xl">
-              <a
-                href="https://calendly.com/rrkautomations/new-meeting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2"
-              >
+            <Button
+              variant="cta"
+              size="xl"
+              onClick={() => openGate({ source: "cta-banner" })}
+            >
+              <span className="flex items-center gap-2">
                 Book Free Automation Audit
                 <ArrowRight className="w-5 h-5" />
-              </a>
+              </span>
             </Button>
 
             {/* Premium Contact Us Button */}

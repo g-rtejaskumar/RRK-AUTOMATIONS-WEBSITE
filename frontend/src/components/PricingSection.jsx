@@ -3,8 +3,10 @@ import { Check, ArrowRight, Star, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { supabase } from "../lib/supabase";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const PricingSection = () => {
+  const { openGate } = useCalendlyGate();
   const [isIndian, setIsIndian] = useState(true);
   const [pricingPlans, setPricingPlans] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -26,11 +28,17 @@ const PricingSection = () => {
     setIsLoading(false);
   };
 
+  // price_inr / price_usd are integers (verified schema). Format with the
+  // currency symbol + locale grouping here, in the UI only.
   const formatPrice = (price, symbol) => {
-    if (!price || String(price).toLowerCase() === "custom") return "Custom";
-    const str = String(price);
-    if (str.includes(symbol) || str.includes('₹') || str.includes('$')) return str;
-    return `${symbol}${str}`;
+    if (price === null || price === undefined || price === "") return "Custom";
+    const num =
+      typeof price === "number"
+        ? price
+        : parseInt(String(price).replace(/[^\d]/g, ""), 10);
+    if (!Number.isFinite(num)) return "Custom";
+    const locale = symbol === "₹" ? "en-IN" : "en-US";
+    return `${symbol}${num.toLocaleString(locale)}`;
   };
 
   return (
@@ -131,11 +139,12 @@ const PricingSection = () => {
                   variant={plan.popular ? "cta" : "outline"}
                   size="lg"
                   className="w-full mt-auto"
+                  onClick={() => openGate({ source: `pricing:${plan.name}` })}
                 >
-                  <a href="#contact" className="flex items-center gap-2">
+                  <span className="flex items-center gap-2">
                     {plan.cta || "Get Started"}
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </span>
                 </Button>
               </motion.div>
             ))}

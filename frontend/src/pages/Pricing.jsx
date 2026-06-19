@@ -2,6 +2,7 @@ import Layout from "../components/Layout";
 import SEOHead from "../components/SEOHead";
 import PricingSection from "../components/PricingSection";
 import CTABanner from "../components/CTABanner";
+import { useCalendlyGate } from "../components/CalendlyLeadGate";
 import { motion } from "framer-motion";
 import { ShieldCheck, Clock, Headphones, Zap } from "lucide-react";
 
@@ -13,6 +14,7 @@ const trustPoints = [
 ];
 
 const Pricing = () => {
+  const { openGate } = useCalendlyGate();
   return (
     <Layout>
       <SEOHead
@@ -148,12 +150,13 @@ const Pricing = () => {
             <div className="mt-10 text-center">
               <p className="text-muted-foreground text-sm">
                 Need a custom plan?{" "}
-                <a
-                  href="/contact"
+                <button
+                  type="button"
+                  onClick={() => openGate({ source: "pricing-custom" })}
                   className="text-secondary font-semibold hover:underline"
                 >
                   Let's talk →
-                </a>
+                </button>
               </p>
             </div>
           </motion.div>

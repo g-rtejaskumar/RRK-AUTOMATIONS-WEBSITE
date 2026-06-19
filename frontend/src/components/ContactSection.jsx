@@ -14,9 +14,11 @@ import { useState } from "react";
 import { useToast } from "../hooks/use-toast";
 import { supabase } from "../lib/supabase";
 import { motion } from "framer-motion";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { openGate } = useCalendlyGate();
 
   const [formData, setFormData] = useState({
     name: "",
@@ -123,11 +125,10 @@ const ContactSection = () => {
             <div className="bg-card/80 backdrop-blur-xl rounded-2xl border border-border p-8 space-y-5">
               <h3 className="text-lg font-bold mb-2">Quick Connect</h3>
 
-              <a
-                href="https://calendly.com/rrkautomations/new-meeting"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 p-4 rounded-xl border border-border hover:border-secondary/40 hover:bg-secondary/5 transition-all duration-300 group"
+              <button
+                type="button"
+                onClick={() => openGate({ source: "contact" })}
+                className="w-full text-left flex items-center gap-4 p-4 rounded-xl border border-border hover:border-secondary/40 hover:bg-secondary/5 transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-xl bg-secondary/10 flex items-center justify-center group-hover:scale-110 transition-transform">
                   <Calendar className="w-5 h-5 text-secondary" />
@@ -137,7 +138,7 @@ const ContactSection = () => {
                   <p className="text-xs text-muted-foreground">15-minute strategy call</p>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground ml-auto group-hover:translate-x-1 transition-transform" />
-              </a>
+              </button>
 
               <a
                 href="https://wa.me/918341374436"

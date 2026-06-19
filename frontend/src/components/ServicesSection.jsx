@@ -3,7 +3,7 @@ import { ArrowRight, Bot, Globe, Cpu, Loader2, Layers, ArrowDown } from "lucide-
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { supabase } from "../lib/supabase";
-import { Link } from "react-router-dom";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const categoryConfig = {
   automation: { title: "Automation Services", Icon: Bot },
@@ -12,6 +12,7 @@ const categoryConfig = {
 };
 
 const ServicesSection = () => {
+  const { openGate } = useCalendlyGate();
   const [activeCategory, setActiveCategory] = useState(null);
   const [servicesData, setServicesData] = useState({});
   const [isLoading, setIsLoading] = useState(true);
@@ -39,8 +40,7 @@ const ServicesSection = () => {
           name: srv.name,
           description: srv.description,
           outcome: Array.isArray(srv.features) ? srv.features.join(" • ") : srv.features,
-          cta: srv.cta,
-          cta_link: srv.cta_link
+          cta: srv.cta
         });
       });
       // Set the first category active by default if there are any
@@ -141,23 +141,16 @@ const ServicesSection = () => {
                                   <span className="text-cyan-500/80 mr-1 shrink-0">Solution:</span> <span>{service.outcome}</span>
                                 </p>
                               </div>
-                              <Button 
-                                size="sm" 
-                                variant="outline" 
-                                asChild 
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => openGate({ source: `service:${service.name}` })}
                                 className="w-fit bg-transparent border-[#ffffff15] text-xs font-semibold hover:bg-white hover:text-black transition-colors"
                               >
-                                {service.cta_link && service.cta_link.startsWith("http") ? (
-                                  <a href={service.cta_link} target="_blank" rel="noopener noreferrer" className="flex items-center">
-                                    {service.cta || "Book Free Audit"}
-                                    <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
-                                  </a>
-                                ) : (
-                                  <Link to={service.cta_link || "/contact"} className="flex items-center">
-                                    {service.cta || "Book Free Audit"}
-                                    <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
-                                  </Link>
-                                )}
+                                <span className="flex items-center">
+                                  {service.cta || "Book Free Audit"}
+                                  <ArrowRight className="w-3.5 h-3.5 ml-2 group-hover:translate-x-1 transition-transform" />
+                                </span>
                               </Button>
                             </div>
                           ))}

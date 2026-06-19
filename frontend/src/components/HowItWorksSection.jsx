@@ -1,6 +1,7 @@
 import { Phone, Cog, TrendingUp, ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "../components/ui/button";
+import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const steps = [
   {
@@ -30,6 +31,7 @@ const steps = [
 ];
 
 const HowItWorksSection = () => {
+  const { openGate } = useCalendlyGate();
   return (
     <section id="how-it-works" className="relative py-28 bg-background overflow-hidden">
       <div className="section-container relative z-10">
@@ -109,16 +111,15 @@ const HowItWorksSection = () => {
           transition={{ delay: 0.3 }}
           className="text-center mt-20"
         >
-          <Button variant="cta" size="xl">
-            <a
-              href="https://calendly.com/rrkautomations/new-meeting"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2"
-            >
+          <Button
+            variant="cta"
+            size="xl"
+            onClick={() => openGate({ source: "how-it-works" })}
+          >
+            <span className="flex items-center gap-2">
               Book Your Free Automation Audit
               <ArrowRight className="w-5 h-5" />
-            </a>
+            </span>
           </Button>
           <p className="text-sm text-muted-foreground mt-4">
             Takes less than 15 minutes • No commitment required

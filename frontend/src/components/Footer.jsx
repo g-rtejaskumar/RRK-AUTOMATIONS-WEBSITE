@@ -60,6 +60,10 @@ const Footer = () => {
                 <img
                   src="/logorrk.png"
                   alt="RRK Automations"
+                  width="48"
+                  height="40"
+                  loading="lazy"
+                  decoding="async"
                   className="w-12 h-10 object-contain relative z-10 group-hover:scale-105 transition-transform duration-300"
                 />
               </div>

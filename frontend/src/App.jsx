@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "./hooks/AuthContext";
+import { CalendlyGateProvider } from "./components/CalendlyLeadGate";
 import { Toaster } from "./components/ui/toaster";
 import { lazy, Suspense } from "react";
 import "./index.css";
@@ -9,6 +10,10 @@ import Index from "./pages/index";
 import ScrollToTop from "./components/ScrollToTop";
 import AdminSwitcher from "./components/AdminSwitcher";
 const Services = lazy(() => import("./pages/Services"));
+const AIChatbots = lazy(() => import("./pages/AIChatbots"));
+const WhatsAppAutomation = lazy(() => import("./pages/WhatsAppAutomation"));
+const BusinessAutomation = lazy(() => import("./pages/BusinessAutomation"));
+const WorkflowAutomation = lazy(() => import("./pages/WorkflowAutomation"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const About = lazy(() => import("./pages/About"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -35,6 +40,7 @@ const App = () => {
   return (
     <AuthProvider>
       <Toaster />
+      <CalendlyGateProvider>
       <BrowserRouter>
         <ScrollToTop />
         <AdminSwitcher />
@@ -42,6 +48,10 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/ai-chatbots" element={<AIChatbots />} />
+            <Route path="/whatsapp-automation" element={<WhatsAppAutomation />} />
+            <Route path="/business-automation" element={<BusinessAutomation />} />
+            <Route path="/workflow-automation" element={<WorkflowAutomation />} />
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
@@ -62,6 +72,7 @@ const App = () => {
           </Routes>
         </Suspense>
       </BrowserRouter>
+      </CalendlyGateProvider>
     </AuthProvider>
   );
 };
