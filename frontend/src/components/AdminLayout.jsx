@@ -1,4 +1,4 @@
-import { useNavigate, useLocation, Link } from "react-router-dom";
+import { useNavigate, useLocation, Link, Navigate } from "react-router-dom";
 import { useAuth } from "../hooks/AuthContext";
 import { Button } from "./ui/button";
 import { LogOut, ArrowLeft, LayoutDashboard, Settings, DollarSign, Loader2, Users } from "lucide-react";
@@ -16,7 +16,13 @@ const AdminLayout = ({ children, title }) => {
     );
   }
 
-  if (!user || !isAdmin) {
+  // Unauthenticated visitors are sent to the login page (they can still reach
+  // /auth directly by URL). Authenticated non-admins get Access Denied.
+  if (!user) {
+    return <Navigate to="/auth" replace />;
+  }
+
+  if (!isAdmin) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background p-4">
         <div className="text-center max-w-md">
