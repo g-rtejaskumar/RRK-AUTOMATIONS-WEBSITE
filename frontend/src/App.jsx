@@ -30,6 +30,18 @@ const AdminServices = lazy(() => import("./pages/admin/AdminServices"));
 const AdminPricing = lazy(() => import("./pages/admin/AdminPricing"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
+// Industry Specific Pages
+const RealEstateAutomation = lazy(() => import("./pages/RealEstateAutomation"));
+const EcommerceAutomation = lazy(() => import("./pages/EcommerceAutomation"));
+const AgencyAutomation = lazy(() => import("./pages/AgencyAutomation"));
+const LegalAutomation = lazy(() => import("./pages/LegalAutomation"));
+const HealthcareAutomation = lazy(() => import("./pages/HealthcareAutomation"));
+const SaaSAutomation = lazy(() => import("./pages/SaaSAutomation"));
+const ConsultingAutomation = lazy(() => import("./pages/ConsultingAutomation"));
+const EducationAutomation = lazy(() => import("./pages/EducationAutomation"));
+const FinanceAutomation = lazy(() => import("./pages/FinanceAutomation"));
+const LocalServicesAutomation = lazy(() => import("./pages/LocalServicesAutomation"));
+
 const Loading = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
     <div className="w-8 h-8 border-2 border-secondary border-t-transparent rounded-full animate-spin" />
@@ -60,6 +72,18 @@ const App = () => {
             <Route path="/terms-of-service" element={<TermsOfService />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/faq" element={<FAQ />} />
+
+            {/* Industry Specific Routes */}
+            <Route path="/real-estate-automation" element={<RealEstateAutomation />} />
+            <Route path="/ecommerce-automation" element={<EcommerceAutomation />} />
+            <Route path="/agency-automation" element={<AgencyAutomation />} />
+            <Route path="/legal-automation" element={<LegalAutomation />} />
+            <Route path="/healthcare-automation" element={<HealthcareAutomation />} />
+            <Route path="/saas-automation" element={<SaaSAutomation />} />
+            <Route path="/consulting-automation" element={<ConsultingAutomation />} />
+            <Route path="/education-automation" element={<EducationAutomation />} />
+            <Route path="/finance-automation" element={<FinanceAutomation />} />
+            <Route path="/local-services-automation" element={<LocalServicesAutomation />} />
 
             <Route path="/blog/:slug" element={<BlogPost />} />
             

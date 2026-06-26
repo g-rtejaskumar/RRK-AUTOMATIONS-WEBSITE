@@ -1,8 +1,8 @@
-import { supabase } from "../../lib/supabase";
+import { getSupabase } from "../../lib/supabase";
 
 export const fetchPricingPlans = async () => {
-  // pricing_plans has no is_active column (verified schema) — do not filter on it.
-  const { data, error } = await supabase
+  const sb = await getSupabase();
+  const { data, error } = await sb
     .from("pricing_plans")
     .select("*")
     .order("order_index", { ascending: true });

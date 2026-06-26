@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 
-const testimonials = [
+const defaultTestimonials = [
   {
     name: "Ankit Sharma",
     role: "Founder, Digital Marketing Agency",
@@ -25,57 +25,59 @@ const testimonials = [
   },
 ];
 
-const TestimonialsSection = () => {
+export default function TestimonialsSection({
+  items = defaultTestimonials,
+  eyebrow = "Testimonials",
+  title = "What Our Clients Say",
+  description = "Real feedback from businesses that automated their growth with us.",
+  density = "normal",
+}) {
+  const sectionPadding = density === "compact" ? "py-20" : "py-28";
+  const headingMargin = density === "compact" ? "mb-14" : "mb-20";
+
   return (
-    <section className="py-28 bg-muted/30">
+    <section className={`${sectionPadding} bg-muted/30`}>
       <div className="section-container">
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20"
+          className={`mx-auto max-w-3xl text-center ${headingMargin}`}
         >
-          <p className="text-secondary font-semibold text-sm uppercase tracking-wider mb-4">
-            Testimonials
+          <p className="mb-4 text-sm font-semibold uppercase tracking-wider text-secondary">
+            {eyebrow}
           </p>
-          <h2 className="text-3xl sm:text-4xl font-bold mb-6">
-            What Our Clients Say
-          </h2>
-          <p className="text-muted-foreground text-lg">
-            Real feedback from businesses that automated their growth with us.
-          </p>
+          <h2 className="mb-6 text-3xl font-bold sm:text-4xl">{title}</h2>
+          <p className="text-lg text-muted-foreground">{description}</p>
         </motion.div>
 
-        <div className="grid md:grid-cols-3 gap-8">
-          {testimonials.map((t, index) => (
+        <div className="grid gap-8 md:grid-cols-3">
+          {items.map((testimonial, index) => (
             <motion.div
-              key={index}
+              key={`${testimonial.name}-${index}`}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.15, duration: 0.6 }}
-              className="bg-card/80 backdrop-blur-xl border border-border rounded-2xl p-8 hover:border-secondary/40 hover:shadow-elevated transition-all duration-300"
+              className="rounded-2xl border border-border bg-card/80 p-8 backdrop-blur-xl transition-all duration-300 hover:border-secondary/40 hover:shadow-elevated"
             >
-              {/* Stars */}
-              <div className="flex gap-1 mb-6">
-                {Array.from({ length: t.rating }).map((_, i) => (
+              <div className="mb-6 flex gap-1">
+                {Array.from({ length: testimonial.rating ?? 5 }).map((_, starIndex) => (
                   <Star
-                    key={i}
-                    className="w-5 h-5 fill-yellow-500 text-yellow-500"
+                    key={starIndex}
+                    className="h-5 w-5 fill-yellow-500 text-yellow-500"
                   />
                 ))}
               </div>
 
-              {/* Quote */}
-              <p className="text-foreground/90 mb-8 leading-relaxed">
-                &ldquo;{t.quote}&rdquo;
+              <p className="mb-8 leading-relaxed text-foreground/90">
+                &ldquo;{testimonial.quote}&rdquo;
               </p>
 
-              {/* Author */}
               <div>
-                <p className="font-semibold text-foreground">{t.name}</p>
-                <p className="text-sm text-muted-foreground">{t.role}</p>
+                <p className="font-semibold text-foreground">{testimonial.name}</p>
+                <p className="text-sm text-muted-foreground">{testimonial.role}</p>
               </div>
             </motion.div>
           ))}
@@ -83,6 +85,4 @@ const TestimonialsSection = () => {
       </div>
     </section>
   );
-};
-
-export default TestimonialsSection;
+}

@@ -50,7 +50,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src="/logorrk.png"
-              alt="RRK Automations"
+              alt="RRK Automations logo"
               width="52"
               height="40"
               fetchPriority="high"
@@ -68,7 +68,7 @@ const Navbar = () => {
               <Link
                 key={link.name}
                 to={link.href}
-                className={`relative text-sm font-medium transition-all group flex items-center gap-1 ${
+                className={`relative text-sm font-medium transition-all group flex items-center gap-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded-sm ${
                   location.pathname === link.href
                     ? "text-secondary"
                     : "text-foreground/80 hover:text-secondary"
@@ -98,7 +98,7 @@ const Navbar = () => {
 
           {/* Mobile Toggle */}
           <button
-            className="md:hidden p-2 text-foreground"
+            className="md:hidden p-2 text-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-lg"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >
@@ -121,7 +121,7 @@ const Navbar = () => {
                   <Link
                     key={link.name}
                     to={link.href}
-                    className={`text-sm font-medium transition-colors ${
+                    className={`text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 rounded-sm ${
                       location.pathname === link.href
                         ? "text-secondary"
                         : "text-muted-foreground hover:text-foreground"

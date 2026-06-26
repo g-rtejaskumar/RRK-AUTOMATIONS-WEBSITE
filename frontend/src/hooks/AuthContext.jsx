@@ -1,5 +1,5 @@
 import { useState, useEffect, createContext, useContext } from "react";
-import { supabase } from "../lib/supabase/";
+import { getSupabase } from "../lib/supabase";
 
 const AuthContext = createContext(undefined);
 
@@ -10,40 +10,46 @@ export const AuthProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Listen for auth state changes
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((event, session) => {
-      setSession(session);
-      setUser(session?.user ?? null);
+    let subscription;
 
-      if (session?.user) {
-        setTimeout(() => {
-          checkAdminRole(session.user.id);
-        }, 0);
-      } else {
-        setIsAdmin(false);
-      }
+    getSupabase().then((supabase) => {
+      // Listen for auth state changes
+      const {
+        data: { subscription: sub },
+      } = supabase.auth.onAuthStateChange((event, session) => {
+        setSession(session);
+        setUser(session?.user ?? null);
 
-      setIsLoading(false);
+        if (session?.user) {
+          setTimeout(() => {
+            checkAdminRole(supabase, session.user.id);
+          }, 0);
+        } else {
+          setIsAdmin(false);
+        }
+
+        setIsLoading(false);
+      });
+
+      subscription = sub;
+
+      // Check existing session
+      supabase.auth.getSession().then(({ data: { session } }) => {
+        setSession(session);
+        setUser(session?.user ?? null);
+
+        if (session?.user) {
+          checkAdminRole(supabase, session.user.id);
+        }
+
+        setIsLoading(false);
+      });
     });
 
-    // Check existing session
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-
-      if (session?.user) {
-        checkAdminRole(session.user.id);
-      }
-
-      setIsLoading(false);
-    });
-
-    return () => subscription.unsubscribe();
+    return () => subscription?.unsubscribe();
   }, []);
 
-  const checkAdminRole = async (userId) => {
+  const checkAdminRole = async (supabase, userId) => {
     try {
       const { data, error } = await supabase
         .from("user_roles")
@@ -59,6 +65,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signUp = async (email, password, fullName) => {
+    const supabase = await getSupabase();
     const redirectUrl = `${window.location.origin}/`;
 
     const { error } = await supabase.auth.signUp({
@@ -76,6 +83,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signIn = async (email, password) => {
+    const supabase = await getSupabase();
     const { error } = await supabase.auth.signInWithPassword({
       email,
       password,
@@ -85,6 +93,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const signOut = async () => {
+    const supabase = await getSupabase();
     await supabase.auth.signOut();
     setIsAdmin(false);
   };

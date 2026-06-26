@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "../hooks/use-toast";
-import { supabase } from "../lib/supabase";
+import { getSupabase } from "../lib/supabase";
 import { motion } from "framer-motion";
 import { useCalendlyGate } from "./CalendlyLeadGate";
 
@@ -48,7 +48,8 @@ const ContactSection = () => {
     setIsSubmitting(true);
 
     try {
-      const { error } = await supabase.functions.invoke("submit-lead", {
+      const sb = await getSupabase();
+      const { error } = await sb.functions.invoke("submit-lead", {
         body: {
           name: formData.name.trim(),
           email: formData.email.trim(),

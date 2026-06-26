@@ -2,7 +2,7 @@ import { Button } from "../components/ui/button";
 import { Check, ArrowRight, Star, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { supabase } from "../lib/supabase";
+import { getSupabase } from "../lib/supabase";
 import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const PricingSection = () => {
@@ -17,7 +17,8 @@ const PricingSection = () => {
 
   const fetchPricing = async () => {
     setIsLoading(true);
-    const { data, error } = await supabase
+    const sb = await getSupabase();
+    const { data, error } = await sb
       .from("pricing_plans")
       .select("*")
       .order("order_index", { ascending: true });

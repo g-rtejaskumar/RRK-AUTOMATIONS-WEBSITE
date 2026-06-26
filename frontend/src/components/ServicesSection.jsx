@@ -2,7 +2,7 @@ import { Button } from "../components/ui/button";
 import { ArrowRight, Bot, Globe, Cpu, Loader2, Layers, ArrowDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { supabase } from "../lib/supabase";
+import { getSupabase } from "../lib/supabase";
 import { useCalendlyGate } from "./CalendlyLeadGate";
 
 const categoryConfig = {
@@ -23,7 +23,8 @@ const ServicesSection = () => {
 
   const fetchServices = async () => {
     setIsLoading(true);
-    const { data } = await supabase
+    const sb = await getSupabase();
+    const { data } = await sb
       .from("services")
       .select("*")
       .eq("is_active", true)

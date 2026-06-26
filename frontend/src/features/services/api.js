@@ -1,7 +1,8 @@
-import { supabase } from "../../lib/supabase";
+import { getSupabase } from "../../lib/supabase";
 
 export const fetchServices = async () => {
-  const { data, error } = await supabase
+  const sb = await getSupabase();
+  const { data, error } = await sb
     .from("services")
     .select("*")
     .eq("is_active", true)

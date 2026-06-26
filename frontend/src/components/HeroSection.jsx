@@ -102,7 +102,7 @@ const HeroSection = () => {
                 </span>
               </Button>
 
-              <Button variant="hero-outline" size="xl" className="w-full sm:w-auto">
+              <Button variant="outline" size="xl" className="w-full sm:w-auto" asChild>
                 <a
                   href="https://wa.me/918341374436"
                   target="_blank"
@@ -110,7 +110,7 @@ const HeroSection = () => {
                   className="flex items-center gap-2"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  Chat on WhatsApp
+                  Ask on WhatsApp
                 </a>
               </Button>
             </motion.div>
@@ -118,7 +118,7 @@ const HeroSection = () => {
             {/* Social Proof */}
             <motion.div
               variants={fadeUp}
-              className="mt-16 pt-8 border-t border-border flex items-center gap-8"
+              className="mt-16 pt-8 border-t border-border flex flex-wrap items-center gap-x-8 gap-y-4"
             >
               <div>
                 <p className="text-2xl font-bold text-secondary">50+</p>

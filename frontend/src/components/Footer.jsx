@@ -23,9 +23,9 @@ const legalLinks = [
 
 const socialLinks = [
   { icon: Linkedin, href: "https://linkedin.com/company/rrk-automations", label: "LinkedIn" },
-  { icon: Twitter, href: "#", label: "Twitter" },
-  { icon: Instagram, href: "#", label: "Instagram" },
-  { icon: Facebook, href: "#", label: "Facebook" },
+  { icon: Twitter, href: "https://x.com/rrkautomations", label: "Twitter" },
+  { icon: Instagram, href: "https://www.instagram.com/rrkautomations?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==", label: "Instagram" },
+  { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61585653158699", label: "Facebook" },
 ];
 
 const Footer = () => {
@@ -59,7 +59,7 @@ const Footer = () => {
                 <div className="absolute inset-0 bg-secondary/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <img
                   src="/logorrk.png"
-                  alt="RRK Automations"
+                  alt="RRK Automations logo"
                   width="48"
                   height="40"
                   loading="lazy"
@@ -81,7 +81,7 @@ const Footer = () => {
               <p className="text-sm font-semibold text-foreground mb-3">Ready to scale?</p>
               <Link
                 to="/contact"
-                className="group flex items-center justify-between w-full bg-muted/50 hover:bg-muted border border-border rounded-lg p-3 transition-colors"
+                className="group flex items-center justify-between w-full bg-muted/50 hover:bg-muted border border-border rounded-lg p-3 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
               >
                 <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
                   Book your free audit
@@ -102,7 +102,7 @@ const Footer = () => {
                   <Link
                     key={link.label}
                     to={link.href}
-                    className="text-muted-foreground hover:text-secondary text-sm transition-colors"
+                    className="text-muted-foreground hover:text-secondary text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm focus-visible:ring-offset-1 focus-visible:ring-offset-background"
                   >
                     {link.label}
                   </Link>
@@ -117,7 +117,7 @@ const Footer = () => {
                   <Link
                     key={link.label}
                     to={link.href}
-                    className="text-muted-foreground hover:text-secondary text-sm transition-colors"
+                    className="text-muted-foreground hover:text-secondary text-sm transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm focus-visible:ring-offset-1 focus-visible:ring-offset-background"
                   >
                     {link.label}
                   </Link>
@@ -141,7 +141,7 @@ const Footer = () => {
                   aria-label={social.label}
                   whileHover={{ y: -3, scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center text-muted-foreground hover:text-secondary hover:border-secondary/50 hover:bg-secondary/10 hover:shadow-glow transition-colors"
+                  className="w-10 h-10 rounded-full bg-muted border border-border flex items-center justify-center text-muted-foreground hover:text-secondary hover:border-secondary/50 hover:bg-secondary/10 hover:shadow-glow transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
@@ -162,7 +162,7 @@ const Footer = () => {
               <Link
                 key={link.label}
                 to={link.href}
-                className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors"
+                className="text-xs sm:text-sm text-muted-foreground hover:text-foreground transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary rounded-sm focus-visible:ring-offset-1 focus-visible:ring-offset-background"
               >
                 {link.label}
               </Link>
